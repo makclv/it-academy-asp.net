@@ -20,7 +20,7 @@ namespace ItAcademy.HomeWork.NumberOne
 
         public decimal GetTax(DateTime date)
         {
-            return GetTax(date);
+            return GetTax((DateTime?)date);
         }
 
         private decimal GetTax(DateTime? date = null)
