@@ -34,10 +34,10 @@ namespace UnitTestTaxService
                 x => x.GetCurrentDate(It.IsAny<string>()) == It.IsAny<DateTime>());
 
             var taxservice = new TaxService(dateTimeService, userService);
-
-            Assert.AreEqual(taxservice.GetTax(new DateTime(2020, 7, 20)), 0.2m);
-            Assert.AreEqual(taxservice.GetTax(new DateTime(2015, 7, 20)), 0.3m);
-            Assert.AreEqual(taxservice.GetTax(new DateTime(1999, 7, 20)), 0.15m);
+            Assert.AreEqual(taxservice.GetTax(new DateTime(2020, 1, 1)), 0.2m);
+            Assert.AreEqual(taxservice.GetTax(new DateTime(2019, 1, 1)), 0.3m);
+            Assert.AreEqual(taxservice.GetTax(new DateTime(2001, 1, 1)), 0.3m);
+            Assert.AreEqual(taxservice.GetTax(new DateTime(1999, 1, 1)), 0.15m);
         }
     }
 }
