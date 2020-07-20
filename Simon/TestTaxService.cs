@@ -34,7 +34,10 @@ namespace UnitTestTaxService
                 x => x.GetCurrentDate(It.IsAny<string>()) == It.IsAny<DateTime>());
 
             var taxservice = new TaxService(dateTimeService, userService);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 871871259645da72f510d595beb9ceb13e7d93f8
             Assert.AreEqual(taxservice.GetTax(new DateTime(2020, 1, 1)), 0.2m);
             Assert.AreEqual(taxservice.GetTax(new DateTime(2019, 1, 1)), 0.3m);
             Assert.AreEqual(taxservice.GetTax(new DateTime(2001, 1, 1)), 0.3m);
