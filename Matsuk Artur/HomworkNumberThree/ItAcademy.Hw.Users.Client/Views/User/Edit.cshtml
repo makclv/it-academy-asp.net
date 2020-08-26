@@ -1,0 +1,35 @@
+﻿@using ItAcademy.Hw.Users.Client.Models
+@model UserView
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p>
+        First Name &emsp;&emsp; @Html.EditorFor(a => a.Name)
+    </p>
+    <p>
+        Last Name &emsp;&emsp;     @Html.EditorFor(a => a.Surname)
+    </p>
+    <p>
+        Phone &emsp; &emsp; &emsp;      @Html.EditorFor(a => a.Phone)
+    </p>
+    <p>
+        Email &emsp; &emsp; &emsp;       @Html.EditorFor(a => a.Email)
+    </p>
+    <p>
+        Title &emsp; &emsp; &emsp;       @Html.EnumDropDownListFor(a => a.Title)
+    </p>
+    <p>
+        Country &emsp; &emsp;       @Html.EnumDropDownListFor(a => a.Country)
+    </p>
+    <p>
+        City  &emsp; &emsp; &emsp;      @Html.EnumDropDownListFor(a => a.City)
+    </p>
+
+
+    <p>
+        Comments &emsp; &emsp;       @Html.TextAreaFor(a => a.Comments)
+    </p>
+
+    <input type="submit" class="btn btn-primary" value="Отправить" />
+
+}
