@@ -1,28 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ThirdHomeWork.BLL.Enum;
+﻿using ThirdHomeWork.BLL.Enum;
 
 namespace ThirdHomeWork.BLL.Models
 {
     public class User
     {
-        public string FirstName;
-        
-        public string LastName;
-        
-        public string Phone;
-        
-        public string Email;
-        
-        public Title Title;
-        
-        public Country Country;
-        
-        public City City;
-        
-        public string Comments;
+        public int Id { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Email { get; set; }
+
+        public Title Title { get; set; }
+
+        public Address Address { get; set; }
+
+        public string Comments { get; set; }
     }
 }
