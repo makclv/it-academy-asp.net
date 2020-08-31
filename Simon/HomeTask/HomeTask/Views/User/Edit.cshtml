@@ -1,0 +1,60 @@
+﻿@using HomeTask.Models
+@model User
+
+<form method="post" action="/User/EditUser">
+   
+    <input type="number" name="Id" value=@Model.Id hidden/>
+    
+    <p>
+    <p>
+        firstName
+    </p>
+    <input type="text" name="FirstName" value=@Model.FirstName />
+    </p>
+    <p>
+    <p>
+        lasttName
+    </p>
+    <input type="text" name="LastName" value=@Model.LastName />
+    </p>
+    <p>
+    <p>
+        email
+    </p>
+    <input type="text" name="Email" value=@Model.Email />
+    </p>
+    <p>
+    <p>
+        phone
+    </p>
+    <input type="text" name="Phone" value=@Model.Phone />
+    </p>
+    <p>
+    <p>
+        Comments
+    </p>
+    <input type="text" name="Comments" value=@Model.Comments />
+    </p>
+    <p>  Title</p>
+    @Html.DropDownListFor(m => m.Title,
+        new SelectList(Enum.GetValues(typeof(HomeTask.Models.Title))),
+        "Select Title", @Model.Title)
+    </p>
+
+    <p>
+    <p>Country</p>
+    @Html.DropDownListFor(m => m.Country,
+       new SelectList(Enum.GetValues(typeof(HomeTask.Models.Country))),
+       "Select Country", @Model.Country)
+    </p>
+    <p>
+    <p> City</p>
+    @Html.DropDownListFor(m => m.City,
+       new SelectList(Enum.GetValues(typeof(HomeTask.Models.City))),
+       "Select City", @Model.City)
+    </p>
+    <p>
+        <input type="submit" value="Отправить" />
+    </p>
+</form>
+

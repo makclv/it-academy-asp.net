@@ -22,11 +22,11 @@ namespace Bookshop.Client.Controllers
         {
             List<Book> books = booksDomainService.GetAllBooks();
 
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Book>, GetAllBooksVm>()  // used for mapping example
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Book>, GetAllBooksViewModel>()  // used for mapping example
                     .ForMember(dest => dest.Books, opt => opt.MapFrom(c => c)));
             var mapper = new Mapper(config);
 
-            var booksVm = mapper.Map<List<Book>, GetAllBooksVm>(books);
+            var booksVm = mapper.Map<List<Book>, GetAllBooksViewModel>(books);
             
             return Json(booksVm, JsonRequestBehavior.AllowGet);
         }
@@ -37,11 +37,11 @@ namespace Bookshop.Client.Controllers
 
             List<Book> books = booksDomainService.GetTopFiveBooks();
 
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Book>, GetTopFiveBooksVm>()  // used for mapping example
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<List<Book>, GetTopFiveBooksViewModel>()  // used for mapping example
                     .ForMember(dest => dest.Books, opt => opt.MapFrom(c => c)));
             var mapper = new Mapper(config);
 
-            var booksVm = mapper.Map<List<Book>, GetTopFiveBooksVm>(books);
+            var booksVm = mapper.Map<List<Book>, GetTopFiveBooksViewModel>(books);
 
 
             return Json(booksVm, JsonRequestBehavior.AllowGet);

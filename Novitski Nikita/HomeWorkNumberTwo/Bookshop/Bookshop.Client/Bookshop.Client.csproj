@@ -146,10 +146,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Orders\Queries\GetAllOrdersVm.cs" />
-    <Compile Include="Models\Orders\Queries\GetOrdersMadeTodayVm.cs" />
-    <Compile Include="Models\Products\Queries\GetAllBooksVm.cs" />
-    <Compile Include="Models\Products\Queries\GetTopFiveBooksVm.cs" />
+    <Compile Include="Models\Orders\Queries\GetAllOrdersViewModel.cs" />
+    <Compile Include="Models\Orders\Queries\GetOrdersMadeTodayViewModel.cs" />
+    <Compile Include="Models\Products\Queries\GetAllBooksViewModel.cs" />
+    <Compile Include="Models\Products\Queries\GetTopFiveBooksViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

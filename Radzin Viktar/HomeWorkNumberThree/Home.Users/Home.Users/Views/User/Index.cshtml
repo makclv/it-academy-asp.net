@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Home.Users.Models.User>
+@{
+    ViewBag.Title = "Home Page";
+}
+<br/>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.TitileSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Country", "Index", new { sortOrder = ViewBag.CountrySortParm })
+        </th>
+        <th>
+            @Html.ActionLink("City", "Index", new { sortOrder = ViewBag.CitySortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Phone", "Index", new { sortOrder = ViewBag.PhoneSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EMailSortParm })
+        </th>
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+            </td>
+        </tr>
+    }
+
+</table>
+
