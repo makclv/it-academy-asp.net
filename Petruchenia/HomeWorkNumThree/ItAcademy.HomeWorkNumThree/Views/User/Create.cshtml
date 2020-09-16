@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "User", FormMethod.Post))
+{
+    <label for="fname">First name:</label>
+    <br>
+    <input type="text" id="FirstName" name="FirstName">
+    <br>
+    <label for="lname">Last name:</label>
+    <br>
+    <input type="text" id="LastName" name="LastName">
+    <br>
+    <br>
+    <label for="Email">Email:</label>
+    <br>
+    <input type="text" id="Email" name="Email">
+    <br>
+    <label for="Email">Phone:</label>
+    <br>
+    <input type="number" id="Phone" name="Phone">
+    <br>
+    <label for="lname">Title:</label>
+    <br>
+    @Html.DropDownList("Title",
+    EnumHelper.GetSelectList
+    (typeof(ItAcademy.HomeWorkNumThree.Models.Title)),
+    "Title:",
+    new { @class = "form-control" })
+    <br>
+    <label for="fname">Country:</label>
+    <br>
+    <select id="Country" name="Country">
+        <option value="">Country</option>
+        <option>Belarus</option>
+        <option>USA</option>
+        <option>Canada</option>
+        <option>France</option>
+    </select>
+    <br>
+    <label for="fname">Sity:</label>
+    <br>
+    <select id="Sity" name="Sity">
+        <option value="">Sity</option>
+        <option>Minsk</option>
+        <option>Pasadena</option>
+        <option>Ottava</option>
+        <option>Paris</option>
+    </select>
+
+    <p><input type="submit" value="Send" /></p>
+}

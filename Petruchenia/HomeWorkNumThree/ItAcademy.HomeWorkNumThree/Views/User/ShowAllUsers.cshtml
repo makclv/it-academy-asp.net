@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "ShowAllUsers";
+}
+    <table>
+        <tr>
+            <td>@Html.ActionLink("Create", "Create", "User", null)</td>
+            </tr>
+    </table>
+
+<h2>ShowAllUsers</h2>
+
+<table>
+    @foreach (var u in ViewBag.User)
+    {
+        int i = 0;
+    <tr>
+        <td>@u.FirstName @u.LastName</td>
+        <td>@u.UserTitle</td>
+        <td>@u.Country</td>
+        <td>@u.Sity</td>
+        <td>@u.Email</td>
+        <td>@u.Phone</td>
+
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", "User", new
+       {
+           FirstName = u.FirstName,
+           LastName = u.LastName,
+           UserTitle = u.UserTitle,
+           Country = u.Country,
+           Sity = u.Sity,
+           Email = u.Email,
+           Phone = u.Phone
+       },
+                null)
+        <td>
+
+        <td>
+            @Html.ActionLink("Delete", "Delete", "User", new
+       {
+           i
+       },
+                null)
+        <td>
+    </tr>
+
+        i++;
+    }
+</table>
+
+<style>
+    table {
+        font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+        font-size: 14px;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    th, td:first-child {
+        background: #AFCDE7;
+        color: #0a171a;
+        padding: 10px 20px;
+    }
+
+    th, td {
+        padding: 15px;
+        border-style: solid;
+        border-width: 0 1px 1px 0;
+        border-color: white;
+    }
+
+    td {
+        background: #D8E6F3;
+    }
+
+        th:first-child, td:first-child {
+            text-align: center;
+        }
+</style>

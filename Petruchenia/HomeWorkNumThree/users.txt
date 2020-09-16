@@ -1,0 +1,41 @@
+{
+  "Header": null,
+  "items": [
+    {
+      "FirstName": "Artsiom",
+      "LastName": "Vishenvskii",
+      "UserTitle": 0,
+      "Country": "USA",
+      "Sity": "California",
+      "Phone": 88005553555,
+      "Email": "Artsiom@gmail.com"
+    },
+    {
+      "FirstName": "Yury",
+      "LastName": "Petruchenia",
+      "UserTitle": 0,
+      "Country": "USA",
+      "Sity": "California",
+      "Phone": 90934593490,
+      "Email": "Yury@gmail.com"
+    },
+    {
+      "FirstName": "Mary",
+      "LastName": "Maryia",
+      "UserTitle": 1,
+      "Country": "USA",
+      "Sity": "California",
+      "Phone": 904252354,
+      "Email": "Mary@gmail.com"
+    },
+    {
+      "FirstName": "Ahalay",
+      "LastName": "Mahalay",
+      "UserTitle": 0,
+      "Country": "Belarus",
+      "Sity": "Minsk",
+      "Phone": 291991913,
+      "Email": "yourockpet@gmail.com"
+    }
+  ]
+}
