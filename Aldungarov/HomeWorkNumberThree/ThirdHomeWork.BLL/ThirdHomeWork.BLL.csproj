@@ -82,7 +82,9 @@
     <Compile Include="Interfaces\Repository\IFakeRepository.cs" />
     <Compile Include="Interfaces\Services\IUserService.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\CityList.cs" />
+    <Compile Include="Models\Country.cs" />
     <Compile Include="Models\CountryList.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

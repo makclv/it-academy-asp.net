@@ -17,7 +17,9 @@ namespace ThirdHomeWork.Utils.Mapping
                 CityName = user.Address.CityName,
                 Phone = user.Phone,
                 Email = user.Email,
-                Comments = user.Comments
+                Comments = user.Comments,
+                CountryList = user.CountryList,
+                CityList = user.CityList
             };
 
             return userViewModel;
@@ -36,7 +38,9 @@ namespace ThirdHomeWork.Utils.Mapping
                                           CityName = viewUser.CityName },
                 Phone = viewUser.Phone,
                 Email = viewUser.Email,
-                Comments = viewUser.Comments
+                Comments = viewUser.Comments,
+                CountryList = viewUser.CountryList,
+                CityList = viewUser.CityList
             };
 
             return userModel;

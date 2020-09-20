@@ -1,4 +1,6 @@
-﻿using ThirdHomeWork.BLL.Enum;
+﻿using System.Collections.Generic;
+using ThirdHomeWork.BLL.Enum;
+using ThirdHomeWork.BLL.Models;
 
 namespace ThirdHomeWork.ViewModels
 {
@@ -19,5 +21,9 @@ namespace ThirdHomeWork.ViewModels
         public string Email { get; set; }
 
         public string Comments { get; set; }
+
+        public List<Country> CountryList { get; set; }
+        
+        public List<City> CityList { get; set; }
     }
 }

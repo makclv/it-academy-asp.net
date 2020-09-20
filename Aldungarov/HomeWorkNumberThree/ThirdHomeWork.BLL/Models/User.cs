@@ -1,4 +1,5 @@
-﻿using ThirdHomeWork.BLL.Enum;
+﻿using System.Collections.Generic;
+using ThirdHomeWork.BLL.Enum;
 
 namespace ThirdHomeWork.BLL.Models
 {
@@ -19,5 +20,9 @@ namespace ThirdHomeWork.BLL.Models
         public Address Address { get; set; }
 
         public string Comments { get; set; }
+
+        public List<Country> CountryList { get; set; }
+
+        public List<City> CityList { get; set; }
     }
 }
