@@ -1,0 +1,80 @@
+﻿@model HomeWorkNumberFour.ViewModels.UserViewModel
+
+@{
+    ViewBag.Title = "Creating User";
+}
+
+@using (Html.BeginForm())
+{
+    <div>
+        <h4>Creating User</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FIO)
+            </dt>
+
+            <dd>
+                @Html.EditorFor(model => model.FIO)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+
+            <dd>
+                @Html.EditorFor(model => model.Phone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.EditorFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.EnumDropDownListFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CountryName)
+            </dt>
+
+            <dd>
+                @Html.DropDownListFor(model => model.CountryName, Model.CountriesList, "Please select")
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CityName)
+            </dt>
+
+            <dd>
+                @Html.DropDownListFor(model => model.CityName, Model.CitiesList, "Please select")
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Comments)
+            </dt>
+
+            <dd>
+                @Html.EditorFor(model => model.Comments)
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Add" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "UserList")
+            </div>
+        }
+    </div>
+}

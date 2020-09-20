@@ -7,8 +7,6 @@ namespace ThirdHomeWork.BLL.Interfaces.Repository
     {
 		List<User> GetUsers();
 
-
-
 		User GetUserById(int id);
 
 		void Add(User user);
