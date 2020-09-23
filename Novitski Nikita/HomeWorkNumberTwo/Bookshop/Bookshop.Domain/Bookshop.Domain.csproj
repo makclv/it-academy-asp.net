@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainServices\OrderDomainService\OrderInterfaces\IOrdersDomainService.cs" />
+    <Compile Include="DomainServices\Interfaces\IOrdersDomainService.cs" />
     <Compile Include="DomainServices\OrderDomainService\OrdersDomainService.cs" />
     <Compile Include="DomainServices\ProductDomainService\BooksDomainService.cs" />
-    <Compile Include="DomainServices\ProductDomainService\ProductInterfaces\IBooksDomainService.cs" />
+    <Compile Include="DomainServices\Interfaces\IBooksDomainService.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Entities\Book.cs" />
     <Compile Include="Models\Entities\Order.cs" />
