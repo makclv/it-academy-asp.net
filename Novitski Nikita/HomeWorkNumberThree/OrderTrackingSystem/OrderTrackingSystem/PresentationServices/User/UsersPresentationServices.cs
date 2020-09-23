@@ -3,85 +3,124 @@ using OrderTrackingSystem.Domain.Models;
 using OrderTrackingSystem.PresentationServices.Interfaces;
 using OrderTrackingSystem.Util.Mappers;
 using OrderTrackingSystem.ViewModels.Users;
-using System;
 using System.Collections.Generic;
+using System.Web.Mvc;
 using System.Linq;
-using System.Web;
+
 
 namespace OrderTrackingSystem.PresentationServices
 {
     public class UsersPresentationServices : IUsersPresentationServices
     {
-        public UsersPresentationServices(IUserDomainService domainService)
+        public UsersPresentationServices(IUserDomainService userDomainService , ICountryDomainService countryDomainService,ICityDomainService cityDomainService)
         {
-            this.domainService = domainService;
+            this.userDomainService = userDomainService;
+            this.countryDomainService = countryDomainService;
+            this.cityDomainService = cityDomainService;
         }
 
-        IUserDomainService domainService;
+        private readonly IUserDomainService userDomainService;
+        private readonly ICountryDomainService countryDomainService;
+        private readonly ICityDomainService cityDomainService;
+
 
         public List<GetUsersViewModel> GetUsers()
         {
-            List<User> allUsers = domainService.GetUsers();
+            List<User> allUsers = userDomainService.GetUsersWithAllAttachments();
             List<GetUsersViewModel> allUsersVm = new List<GetUsersViewModel>();
 
-            foreach (var user in allUsers)
-            {
-                allUsersVm.Add(UserMapper.UserToGetUserVm(user));
-            }
-            
+            allUsers.ForEach(user => allUsersVm.Add(UserMapper.UserToGetUserVm(user)));
+
             return allUsersVm;
         }
 
 
         public List<City> GetCitys()
         {
-            return domainService.GetCitys();
+            return cityDomainService.GetCitys();
         }
 
         public List<Country> GetCountrys()
         {
-            return domainService.GetCountrys();
+            return countryDomainService.GetCountrys();
+
         }
 
         public void AddUser(CreateUsersViewModel userVm)
         {
-
             User user = UserMapper.CreateUsersVmToUser(userVm);
-            user.City = domainService.GetCity(userVm.CityId);
-            user.Country = domainService.GetCountry(userVm.CountryId);
+            user.City = cityDomainService.GetCity(userVm.CityId);
+            user.Country = countryDomainService.GetCountry(userVm.CountryId);
 
-            domainService.AddUser(user);
+            userDomainService.AddUser(user);
+
         }
 
-        public bool VerificationUserId(Guid id)
+        public EditUsersViewModel GetEditUsersVm(int id)
         {
-            return domainService.VerificationUserId(id);
-        }
+            User user = userDomainService.GetUserWithAllAttachments(id);
+            return GetEditUsersVm(UserMapper.UserToEditUsersVm(user));
 
-        public EditUsersViewModel GetEditUsersVm(Guid id)
-        {
-            User user = domainService.GetUser(id);
-            return UserMapper.UserToEditUsersVm(user);
         }
 
         public void EditUser(EditUsersViewModel userVm)
         {
-            User user = UserMapper.EditUsersVmToUser(userVm);
-            user.City = domainService.GetCity(userVm.CityId);
-            user.Country = domainService.GetCountry(userVm.CountryId);
+            User user = userDomainService.GetUserWithAllAttachments(userVm.Id);
+            user = UserMapper.EditUsersVmToUser(userVm, user);
+            user.City = cityDomainService.GetCity(userVm.CityId);
+            user.Country = countryDomainService.GetCountry(userVm.CountryId);
 
-            domainService.EditUser(user);
+            userDomainService.EditUser();
+
         }
 
-        public DeleteUsersViewModel GetDeleteUsersVm(Guid id)
+        public DeleteUsersViewModel GetDeleteUsersVm(int id)
         {
-            User user = domainService.GetUser(id);
+            User user = userDomainService.GetUserWithAllAttachments(id);
             return UserMapper.UserToDeleteUsersVm(user);
         }
 
-        public void DeleteUser(Guid userId)
+        public void DeleteUser(int userId)
         {
-            domainService.DeleteUser(userId);
+            userDomainService.DeleteUser(userId);
+
+        }
+
+        public CreateUsersViewModel GetCreateUsersVm()
+        {
+            return  new CreateUsersViewModel
+            {
+                SelectListCitys = GetCitiesSelectList(),
+                SelectListCountries = GetCountrysSelectList()
+            };
+        }
+
+        public CreateUsersViewModel GetCreateUsersVm(CreateUsersViewModel userVm)
+        {
+            userVm.SelectListCitys = GetCitiesSelectList();
+            userVm.SelectListCountries = GetCountrysSelectList();
+            return userVm;
+
+        }
+
+        public EditUsersViewModel GetEditUsersVm(EditUsersViewModel userVm)
+        {
+            userVm.SelectListCitys = GetCitiesSelectList();
+            userVm.SelectListCountries = GetCountrysSelectList();
+            return userVm;
+
+        }
+
+        private SelectList GetCitiesSelectList()
+        {
+            return new SelectList(cityDomainService.GetCitys(), "Id", "Name");
+
+        }
+
+        private SelectList GetCountrysSelectList()
+        {
+            return new SelectList(countryDomainService.GetCountrys(), "Id", "Name");
+
         }
     }
 }

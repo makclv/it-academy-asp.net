@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
+    <script>
+          [].forEach.call(document.getElementsByClassName('mvc-grid'), function (element) {
+            new MvcGrid(element);
+          });
+</body>
+</html>

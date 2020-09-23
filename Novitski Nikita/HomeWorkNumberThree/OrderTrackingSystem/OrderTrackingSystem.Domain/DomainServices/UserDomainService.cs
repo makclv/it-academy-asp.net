@@ -1,67 +1,134 @@
 ﻿using OrderTrackingSystem.Domain.DomainServices.Interfaces;
 using OrderTrackingSystem.Domain.Models;
 using OrderTrackingSystem.Domain.Repositories;
-using System;
+using OrderTrackingSystem.Domain.UnitOfWork;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OrderTrackingSystem.Domain.DomainServices
 {
     public class UserDomainService : IUserDomainService
     {
-        IUserRepository repository;
-        public UserDomainService(IUserRepository repository)
+        private readonly IUserRepository userRepository;
+        private readonly ICityDomainService cityDomainService;
+        private readonly ICountryDomainService countryDomainService;
+        private readonly IUnitOfWork unitOfWork;
+
+        private User oldUserData;
+
+        public UserDomainService(IUserRepository userRepository, IUnitOfWork unitOfWork, ICityDomainService cityDomainService, ICountryDomainService countryDomainService)
         {
-            this.repository = repository;
+            this.userRepository = userRepository;
+            this.cityDomainService = cityDomainService;
+            this.countryDomainService = countryDomainService;
+            this.unitOfWork = unitOfWork;
+
         }
 
-        public List<User> GetUsers()
+        public List<User> GetUsersWithAllAttachments()
         {
-            return repository.GetUsers();
-        }
+            return userRepository.GetAllWithAllAttachments();
 
-        public List<City> GetCitys()
-        {
-            return repository.GetCitys();
-        }
-        public List<Country> GetCountrys()
-        {
-            return repository.GetCountrys();
         }
 
         public void AddUser(User user)
         {
-            repository.AddUser(user);
+            userRepository.Add(user);
+            unitOfWork.SaveChanges();
+
         }
 
-        public City GetCity(Guid id)
+        public bool VerificationUserId(int id)
         {
-            return repository.GetCity(id);
-        }
-        public Country GetCountry(Guid id)
-        {
-            return repository.GetCountry(id);
-        }
-
-        public bool VerificationUserId(Guid id)
-        {
-            return repository.IsExistsUser(id);
-        }
-        public User GetUser(Guid id)
-        {
-            return repository.GetUser(id);
+            if(userRepository.IsExistsUser(id))
+            {
+                oldUserData = userRepository.Get(id);
+                return true;
+            }
+            return false;
         }
 
-        public void EditUser(User user)
+        public void EditUser()
         {
-            repository.EditUser(user);
+            unitOfWork.SaveChanges();
         }
 
-        public void DeleteUser(Guid userId)
+        public User GetUserWithAllAttachments(int id)
         {
-            repository.DeleteUser(userId);
+            return userRepository.GetUserWithAllAttachments(id);
+
+        }
+
+        public void DeleteUser(int userId)
+        {
+            userRepository.DeleteById(userId);
+            unitOfWork.SaveChanges();
+
+        }
+
+        public bool IsUniquePhone(string phone)
+        {
+            return userRepository.IsUniquePhone(phone);
+
+        }
+
+        public bool IsUniquePhoneNotCheckingYourself(string phone)
+        {
+            if(phone == oldUserData.Phone)
+            {
+                return true;
+            }
+            return userRepository.IsUniquePhone(phone);
+        }
+        public bool IsUniqueEmailNotCheckingYourself(string email)
+        {
+            if (email == oldUserData.Email)
+            {
+                return true;
+            }
+            return userRepository.IsUniqueEmail(email);
+        }
+
+        public bool IsUniqueEmail(string email)
+        {
+            return userRepository.IsUniqueEmail(email);
+
+        }
+
+        public bool IsUniqueFullName(string fullName)
+        {
+            List<string> allFullNames = new List<string>();
+            userRepository.GetFullNames()
+                .ForEach(c => allFullNames.Add($"{c.FirstName}+{c.LastName}"));
+
+            return !allFullNames.Contains(fullName);
+
+        }
+
+        public bool IsUniqueFullNameNotCheckingYourself(string fullName)
+        {
+            if(GetUserFullName() == fullName)
+            {
+                return true;
+            }
+            else
+            {
+                List<string> allFullNames = new List<string>();
+                userRepository.GetFullNames()
+                    .ForEach(c => allFullNames.Add($"{c.FirstName}+{c.LastName}"));
+
+                return !allFullNames.Contains(fullName);
+            }    
+        }
+
+        private string GetUserFullName()
+        {
+            return  $"{oldUserData.FirstName}+{oldUserData.LastName}";
+        }
+
+        public bool IsCityBelongsCountry(int countryId, int cityId)
+        {
+            return countryDomainService.IsCityBelongsCountry(countryId, cityId);
+
         }
     }
 }

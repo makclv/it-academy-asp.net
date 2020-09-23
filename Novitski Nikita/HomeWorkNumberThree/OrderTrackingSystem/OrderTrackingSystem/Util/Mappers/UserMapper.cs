@@ -14,14 +14,11 @@ namespace OrderTrackingSystem.Util.Mappers
         {
             return new User
             {
-                Id =Guid.NewGuid(),
-                FirsName = userVm.FirsName,
+                FirstName = userVm.FirstName,
                 LastName = userVm.LastName,
                 Phone = userVm.Phone,
                 Email =userVm.Email,
                 Comments = userVm.Comments,
-                CityId =userVm.CityId,
-                CountryId=userVm.CountryId,
                 Title= userVm.Title
 
             };
@@ -32,7 +29,7 @@ namespace OrderTrackingSystem.Util.Mappers
             return new GetUsersViewModel
             {
                 Id = user.Id,
-                Name = $"{user.FirsName} {user.LastName}",
+                Name = $"{user.FirstName} {user.LastName}",
                 Title = user.Title,
                 Country = user.Country,
                 City = user.City,
@@ -48,34 +45,43 @@ namespace OrderTrackingSystem.Util.Mappers
             return new EditUsersViewModel
             {
                 Id =user.Id,
-                FirsName = user.FirsName,
+                FirstName = user.FirstName,
                 LastName = user.LastName,
                 Phone = user.Phone,
                 Email = user.Email,
                 Comments = user.Comments,
-                CityId = user.CityId,
-                CountryId = user.CountryId,
+                CityId = user.City.Id,
+                CountryId = user.Country.Id,
                 Title = user.Title
 
             };
         }
 
         
-        public static User EditUsersVmToUser(EditUsersViewModel userVm)
+        public static User EditUsersVmToUser(EditUsersViewModel userVm, User user)
         {
-            return new User
-            {
-                Id = userVm.Id,
-                FirsName = userVm.FirsName,
-                LastName = userVm.LastName,
-                Phone = userVm.Phone,
-                Email = userVm.Email,
-                Comments = userVm.Comments,
-                CityId = userVm.CityId,
-                CountryId = userVm.CountryId,
-                Title = userVm.Title,
 
-            };
+            user.FirstName = userVm.FirstName;
+            user.LastName = userVm.LastName;
+            user.Phone = userVm.Phone;
+            user.Email = userVm.Email;
+            user.Comments = userVm.Comments;
+            user.Title = userVm.Title;
+
+
+            return user;
+            //{
+            //   // Id = userVm.Id,
+            //    FirsName = userVm.FirsName,
+            //    LastName = userVm.LastName,
+            //    Phone = userVm.Phone,
+            //    Email = userVm.Email,
+            //    Comments = userVm.Comments,
+            //    //CityId = userVm.CityId,
+            //    //CountryId = userVm.CountryId,
+            //    Title = userVm.Title,
+
+            //};
         }
 
         public static DeleteUsersViewModel UserToDeleteUsersVm(User user)
@@ -83,7 +89,7 @@ namespace OrderTrackingSystem.Util.Mappers
             return new DeleteUsersViewModel
             {
                 Id = user.Id,
-                Name = $"{user.FirsName} {user.LastName}",
+                Name = $"{user.FirstName} {user.LastName}",
                 Phone = user.Phone,
                 Email = user.Email,
                 Comments = user.Comments,

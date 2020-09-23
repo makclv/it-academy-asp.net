@@ -1,4 +1,5 @@
-﻿using OrderTrackingSystem.App_Start;
+﻿using FluentValidation.Mvc;
+using OrderTrackingSystem.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace OrderTrackingSystem
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+           // FluentValidationModelValidatorProvider.Configure();
         }
     }
 }

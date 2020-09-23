@@ -1,25 +1,23 @@
 ﻿using OrderTrackingSystem.Domain.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OrderTrackingSystem.Domain.DomainServices.Interfaces
 {
-    public interface IUserDomainService
+    public interface IUserDomainService : IBaseDomainService
     {
-         List<User> GetUsers();
-         List<City> GetCitys();
-         List<Country> GetCountrys();
-         void AddUser(User user);
-         City GetCity(Guid id);
-         Country GetCountry(Guid id);
-         bool  VerificationUserId(Guid id);
-         User GetUser(Guid id);
-         void EditUser(User user);
-        void DeleteUser(Guid userId);
-
+        List<User> GetUsersWithAllAttachments();
+        void AddUser(User user);
+        bool VerificationUserId(int id);
+        User GetUserWithAllAttachments(int id);
+        void DeleteUser(int userId);
+        void EditUser();
+        bool IsUniquePhone(string phone);
+        bool IsUniqueEmail(string email);
+        bool IsUniqueFullName(string fullName);
+        bool IsUniqueFullNameNotCheckingYourself(string fullName);
+        bool IsCityBelongsCountry(int countryId, int cityId);
+        bool IsUniquePhoneNotCheckingYourself(string phone);
+        bool IsUniqueEmailNotCheckingYourself(string email);
 
     }
 }
