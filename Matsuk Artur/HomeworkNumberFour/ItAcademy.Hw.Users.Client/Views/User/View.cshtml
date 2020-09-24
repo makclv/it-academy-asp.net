@@ -1,0 +1,59 @@
+﻿@using ItAcademy.Hw.Users.Client.Models
+@model List<UserView>
+@{
+    ViewBag.Title = "View";
+    Layout = "";
+    Styles.Render("~/Content/css");
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    </head>
+<body>
+    @Html.ActionLink("Create","Add",null, new { @class = "btn btn-primary" })
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Title</th>
+                <th scope="col">Country</th>
+                <th scope="col">City</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            @{ 
+                foreach (var a in Model)
+                {
+                    var FullName = a.Name + " " + a.Surname;
+
+
+
+
+            <tr>
+                <th scope="row">@FullName</th>
+                <td>@Html.DisplayFor(b=>a.Title)</td>
+                <td>@Html.DisplayFor(b => a.Country)</td>
+                <td>@Html.DisplayFor(b => a.City)</td>
+                <td>@a.Phone</td>
+                <td>@a.Email</td>
+                <td>@Html.ActionLink("Edit","Edit",new { id=a.Id },null) @Html.Partial("confirmation",a.Id) @*@Html.ActionLink("Delete","Delete", new { id=a.Id },null)*@</td>
+            </tr>
+
+                    
+                }
+                }
+
+        </tbody>
+    </table>
+</body>
+</html>
+

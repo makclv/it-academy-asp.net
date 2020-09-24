@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "KWLtjfWsggOMYtPhfFXw4KHaZjociWOkfa6bVmRsL+O55WetUqM/HxJ7b4Q6nvJsSxKMunT1hBYOpJEILR3hrw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\amats\\source\\repos\\123\\HomeworkNumberFour\\ItAcademy.Hw.Users.Domain\\tAcademy.Hw.Users.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\amats\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
+    "C:\\Users\\amats\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\amats\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

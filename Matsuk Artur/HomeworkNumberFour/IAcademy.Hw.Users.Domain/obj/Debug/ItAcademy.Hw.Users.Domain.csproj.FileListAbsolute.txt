@@ -1,0 +1,11 @@
+C:\Users\amats\source\repos\123\HomeworkNumberFour\IAcademy.Hw.Users.Domain\obj\Debug\ItAcademy.Hw.Users.Domain.csproj.CoreCompileInputs.cache
+C:\Users\amats\source\repos\123\HomeworkNumberFour\IAcademy.Hw.Users.Domain\bin\Debug\ItAcademy.Hw.Users.Domain.dll.config
+C:\Users\amats\source\repos\123\HomeworkNumberFour\IAcademy.Hw.Users.Domain\bin\Debug\ItAcademy.Hw.Users.Domain.dll
+C:\Users\amats\source\repos\123\HomeworkNumberFour\IAcademy.Hw.Users.Domain\bin\Debug\ItAcademy.Hw.Users.Domain.pdb
+C:\Users\amats\source\repos\123\HomeworkNumberFour\IAcademy.Hw.Users.Domain\bin\Debug\EntityFramework.dll
+C:\Users\amats\source\repos\123\HomeworkNumberFour\IAcademy.Hw.Users.Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\amats\source\repos\123\HomeworkNumberFour\IAcademy.Hw.Users.Domain\bin\Debug\EntityFramework.xml
+C:\Users\amats\source\repos\123\HomeworkNumberFour\IAcademy.Hw.Users.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\amats\source\repos\123\HomeworkNumberFour\IAcademy.Hw.Users.Domain\obj\Debug\ItAcademy.Hw.Users.Domain.csproj.CopyComplete
+C:\Users\amats\source\repos\123\HomeworkNumberFour\IAcademy.Hw.Users.Domain\obj\Debug\ItAcademy.Hw.Users.Domain.dll
+C:\Users\amats\source\repos\123\HomeworkNumberFour\IAcademy.Hw.Users.Domain\obj\Debug\ItAcademy.Hw.Users.Domain.pdb
