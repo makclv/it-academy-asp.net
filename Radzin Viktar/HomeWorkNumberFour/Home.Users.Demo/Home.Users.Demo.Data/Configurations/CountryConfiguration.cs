@@ -12,7 +12,7 @@ namespace Home.Users.Demo.Data.Configurations
     {
         public CountryConfiguration()
         {
-            ToTable("Countries");
+            Property(x => x.Name).IsRequired().HasMaxLength(20);
         }
     }
 }

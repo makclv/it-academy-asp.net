@@ -14,5 +14,6 @@ namespace Home.Users.Demo.Domain.Entities
 
         public List<User> Users { get; set; }
 
+        public List<City> Cities { get; set; }
     }
 }

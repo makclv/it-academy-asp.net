@@ -1,4 +1,4 @@
-﻿@model Home.Users.Demo.Models.UserViewModel
+﻿@model Home.Users.Demo.Models.UserEditViewModel
 @{
     ViewBag.Title = "Edit";
 }
@@ -48,7 +48,7 @@
         @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
         @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.Title, Model.Title)
+            @Html.EnumDropDownListFor(model => model.Title, "-- Select --")
         </div>
     </div>
 
@@ -74,6 +74,7 @@
         </div>
     </div>
 
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Save" class="btn btn-success" />

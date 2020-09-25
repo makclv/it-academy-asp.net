@@ -25,6 +25,8 @@ namespace Home.Users.Demo.Domain.Services.Interfaces
 
         void DeleteUser(int id);
 
+        bool ifCityOfCountry(int cityId, int countryId);
+
         bool IsUniqueMail(string mail);
 
         bool IsUniquePhone(string phone);

@@ -43,14 +43,14 @@
         @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
         @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.Title, "Select a license", new { @class = "control-label col-md-2" })
+            @Html.EnumDropDownListFor(model => model.Title, "--Select--", new { @class = "control-label col-md-2" })
         </div>
     </div>
     <div class="form-group">
         @Html.ValidationMessageFor(x => x.Country.CountryId, null, new { @class = "text-danger" })
         @Html.LabelFor(model => model.Country.Name, "Country", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Country.CountryId, new SelectList(Model.Countries, "CountryId", "Name"), "--Select")
+            @Html.DropDownListFor(model => model.Country.CountryId, new SelectList(Model.Countries, "CountryId", "Name"), "--Select--")
         </div>
     </div>
     <div class="form-group">
@@ -67,6 +67,9 @@
             @Html.EditorFor(model => model.Comments)
         </div>
     </div>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-primary" />

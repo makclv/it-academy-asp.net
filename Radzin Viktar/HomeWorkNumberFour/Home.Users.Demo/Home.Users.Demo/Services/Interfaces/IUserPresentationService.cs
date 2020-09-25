@@ -20,9 +20,13 @@ namespace Home.Users.Demo.Services.Interfaces
 
         UserViewModel SelectUserByIdWithCountryandCity(int id);
 
+        UserEditViewModel SelectUserEditByIdWithCountryandCity(int id);
+
+        bool ifCityOfCountry(int cityId, int countryId);
+
         void InsertUser(UserViewModel user);
 
-        void UpdateUser(UserViewModel user);
+        void UpdateUser(UserEditViewModel user);
 
         void DeleteUser(int id);
 
@@ -33,7 +37,6 @@ namespace Home.Users.Demo.Services.Interfaces
         bool IsUniquePhone(string phone);
 
         bool IsUniqueMail(string mail);
-
 
     }
 }

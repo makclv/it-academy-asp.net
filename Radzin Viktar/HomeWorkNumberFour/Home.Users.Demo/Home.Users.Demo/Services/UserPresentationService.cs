@@ -40,6 +40,12 @@ namespace Home.Users.Demo.Services
             return countryViewModel;
         }
 
+        public bool ifCityOfCountry(int cityId, int countryId)
+        {
+            return userDomainService.ifCityOfCountry(cityId, countryId);
+         
+        }
+
         public void InsertUser(UserViewModel user)
         {
             var insertUser = Mapper.Map<UserViewModel,User>(user);
@@ -87,7 +93,14 @@ namespace Home.Users.Demo.Services
             return userViewModel;
         }
 
-        public void UpdateUser(UserViewModel user)
+        public UserEditViewModel SelectUserEditByIdWithCountryandCity(int id)
+        {
+            var user = userDomainService.SelectUserByIdWithCountryandCity(id);
+            var userEditViewModel = Mapper.Map<User, UserEditViewModel>(user);
+            return userEditViewModel;
+        }
+
+        public void UpdateUser(UserEditViewModel user)
         {
             var UserFromDataBase = userDomainService.SelectUserById(user.UserId);
             Mapper.Map(user, UserFromDataBase);

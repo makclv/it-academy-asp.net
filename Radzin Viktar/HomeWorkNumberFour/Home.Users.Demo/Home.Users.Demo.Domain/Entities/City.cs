@@ -14,5 +14,8 @@ namespace Home.Users.Demo.Domain.Entities
 
         public List<User> Users { get; set; }
 
-    }
+        public Country Country { get; set; }
+
+
+}
 }

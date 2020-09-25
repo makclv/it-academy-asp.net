@@ -53,25 +53,26 @@ namespace Home.Users.Demo.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            UserViewModel userViewModel = userPresentationService.SelectUserByIdWithCountryandCity(id);
-            userViewModel.Countries = userPresentationService.GetCountries();
-            userViewModel.Cities = userPresentationService.GetCities();
+            UserEditViewModel userEditViewModel = userPresentationService.SelectUserEditByIdWithCountryandCity(id);
+            userEditViewModel.Countries = userPresentationService.GetCountries();
+            userEditViewModel.Cities = userPresentationService.GetCities();
             
-            return View(userViewModel);
+            return View(userEditViewModel);
         }
 
         [HttpPost]
-        public ActionResult Edit(UserViewModel userViewModel)
+        public ActionResult Edit(UserEditViewModel userEditViewModel)
         {
             if (ModelState.IsValid)
             {
-                userPresentationService.UpdateUser(userViewModel);
+                userPresentationService.UpdateUser(userEditViewModel);
                 return RedirectToAction("Index");
             }
             else 
-            {   userViewModel.Countries = userPresentationService.GetCountries();
-                userViewModel.Cities = userPresentationService.GetCities();
-                return View("Edit", userViewModel);
+            {
+                userEditViewModel.Countries = userPresentationService.GetCountries();
+                userEditViewModel.Cities = userPresentationService.GetCities();
+                return View("Edit", userEditViewModel);
             }
             
         }

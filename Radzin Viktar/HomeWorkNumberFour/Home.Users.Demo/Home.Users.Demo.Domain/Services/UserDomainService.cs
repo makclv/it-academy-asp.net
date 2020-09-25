@@ -31,6 +31,20 @@ namespace Home.Users.Demo.Domain.Services
             return userRepository.GetCountries();
         }
 
+        public bool ifCityOfCountry(int cityId, int countryId)
+        {
+            var city = userRepository.GetCities().Where(x => x.CityId == cityId).FirstOrDefault();
+            var country = userRepository.GetCountries().Where(x => x.CountryId == countryId).FirstOrDefault();
+            if (city.CityId == country.CountryId)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void InsertUser(User user)
         {
             userRepository.InsertUser(user);

@@ -33,7 +33,8 @@ namespace Home.Users.Demo.Validators
                 MaximumLength(1000).WithMessage("Comments can have a max of 1000 characters.");
             RuleFor(x => x.Country).NotEmpty().WithMessage("Country required");
             RuleFor(x => x.City).NotEmpty().WithMessage("Country required");
-
+            RuleFor(x => x)
+               .Must(ifCityOfCountry).WithMessage("This city not of  country.");
         }
 
         private bool IsUniqueFirstName(string firstname)
@@ -55,6 +56,12 @@ namespace Home.Users.Demo.Validators
         {
             return userPresentationService.IsUniqueMail(mail);
         }
+
+        private bool ifCityOfCountry(UserViewModel userViewModel)
+        {
+            return userPresentationService.ifCityOfCountry(userViewModel.Country.CountryId, userViewModel.City.CityId);
+        }
+
 
     }
 }

@@ -12,7 +12,10 @@ namespace Home.Users.Demo.Data.Configurations
     {
         public CityCinfiguration () 
         {
-            ToTable("Cities");
+            Property(x => x.Name).IsRequired().HasMaxLength(20);
+            HasRequired(x=>x.Country)
+                .WithMany(c => c.Cities)
+                .WillCascadeOnDelete(false);
         }
     }
 }

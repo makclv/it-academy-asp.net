@@ -14,8 +14,12 @@ namespace Home.Users.Demo.Data.Configurations
             Property(x => x.Phone).HasMaxLength(15).IsRequired();
             Property(x => x.Email).HasMaxLength(25).IsRequired();
             Property(x => x.Title).HasColumnType("int").IsRequired();
-            HasRequired(x => x.Country).WithMany(x => x.Users);
-            HasRequired(x => x.City).WithMany(x => x.Users);
+            HasRequired(x => x.Country)
+                .WithMany(x => x.Users)
+                .WillCascadeOnDelete(false);
+            HasRequired(x => x.City)
+                .WithMany(x => x.Users)
+                .WillCascadeOnDelete(false);
         }
     }
 }
