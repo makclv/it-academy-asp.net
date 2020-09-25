@@ -7,72 +7,80 @@
 
 @using (Html.BeginForm())
 {
-    <div class="form-horizontal">
-        <h4>User Information</h4>
-        <hr />
-        @Html.HiddenFor(model => model.UserId)
+<div class="form-horizontal">
+    <h4>User Information</h4>
+    <hr />
+    @Html.HiddenFor(model => model.UserId)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName)
+    <div class="form-group">
+        @Html.ValidationMessageFor(x => x.FirstName, null, new { @class = "text-danger" })
+        @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FirstName)
 
-            </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName)
-            </div>
+    </div>
+    <div class="form-group">
+        @Html.ValidationMessageFor(x => x.LastName, null, new { @class = "text-danger" })
+        @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LastName)
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Phone, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Phone)
-            </div>
+    <div class="form-group">
+        @Html.ValidationMessageFor(x => x.Phone, null, new { @class = "text-danger" })
+        @Html.LabelFor(model => model.Phone, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Phone)
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email)
+    <div class="form-group">
+        @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger" })
+        @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email)
 
-            </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Title, Model.Title)
-            </div>
+    </div>
+    <div class="form-group">
+        @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
+        @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(model => model.Title, Model.Title)
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Country.CountryId, "Country", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Country.CountryId, new SelectList(Model.Countries, "CountryId", "Name"), "-- Select --")
-            </div>
+    <div class="form-group">
+        @Html.ValidationMessageFor(x => x.Country.CountryId, null, new { @class = "text-danger" })
+        @Html.LabelFor(model => model.Country.CountryId, "Country", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Country.CountryId, new SelectList(Model.Countries, "CountryId", "Name"), "-- Select --")
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.City.Name, "City", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.City.CityId, new SelectList(Model.Cities, "CityId", "Name"), "Select")
-            </div>
+    </div>
+    <div class="form-group">
+        @Html.ValidationMessageFor(x => x.City.CityId, null, new { @class = "text-danger" })
+        @Html.LabelFor(model => model.City.Name, "City", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.City.CityId, new SelectList(Model.Cities, "CityId", "Name"), "Select")
         </div>
+    </div>
+    <div class="form-group">
+        @Html.ValidationMessageFor(x => x.Comments, null, new { @class = "text-danger" })
+        @Html.LabelFor(model => model.Comments, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Comments)
+        </div>
+    </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Comments, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Comments)
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-success" />
-                </div>
-            </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-success" />
         </div>
+    </div>
+</div>
+   
     
 }
 

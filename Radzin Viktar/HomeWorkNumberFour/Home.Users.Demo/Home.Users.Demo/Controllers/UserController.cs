@@ -63,8 +63,17 @@ namespace Home.Users.Demo.Controllers
         [HttpPost]
         public ActionResult Edit(UserViewModel userViewModel)
         {
-            userPresentationService.UpdateUser(userViewModel);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                userPresentationService.UpdateUser(userViewModel);
+                return RedirectToAction("Index");
+            }
+            else 
+            {   userViewModel.Countries = userPresentationService.GetCountries();
+                userViewModel.Cities = userPresentationService.GetCities();
+                return View("Edit", userViewModel);
+            }
+            
         }
         [HttpGet]
         public ActionResult Delete(int id)
