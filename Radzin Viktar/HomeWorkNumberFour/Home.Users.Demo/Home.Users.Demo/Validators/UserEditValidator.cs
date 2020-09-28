@@ -32,7 +32,7 @@ namespace Home.Users.Demo.Validators
             .MaximumLength(25).WithMessage("Email can have a max of 20 characters.")
             .EmailAddress();
 
-            RuleFor(x => x.Title).NotEmpty().WithMessage("Title required");
+            RuleFor(x => x.TitleView).NotEmpty().WithMessage("Title required");
             RuleFor(x => x.Comments).
                 MaximumLength(1000).WithMessage("Comments can have a max of 1000 characters.");
             RuleFor(x => x.Country).NotEmpty().WithMessage("Country required");

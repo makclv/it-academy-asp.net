@@ -45,10 +45,10 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
-        @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+        @Html.ValidationMessageFor(x => x.TitleView, null, new { @class = "text-danger" })
+        @Html.LabelFor(model => model.TitleView, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.Title, "-- Select --")
+            @Html.EnumDropDownListFor(model => model.TitleView, "-- Select --")
         </div>
     </div>
 

@@ -20,7 +20,7 @@ namespace Home.Users.Demo.Models
 
         public string Email { get; set; }
 
-        public TitleViewModel Title { get; set; }
+        public TitleViewModel TitleView { get; set; }
 
         public CountryViewModel Country { get; set; }
 

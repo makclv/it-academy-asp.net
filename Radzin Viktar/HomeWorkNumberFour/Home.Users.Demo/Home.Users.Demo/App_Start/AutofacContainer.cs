@@ -30,7 +30,6 @@ namespace Home.Users.Demo.App_Start
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
             builder.RegisterType<UserDbContext>().As<IUserDbContext>().InstancePerLifetimeScope();
             builder.RegisterType<UserPresentationService>().As<IUserPresentationService>().InstancePerDependency();
-            builder.RegisterType<UserPresentationService>().As<IUserPresentationService>().InstancePerDependency();
             builder.RegisterType<UserDomainService>().As<IUserDomainService>().InstancePerDependency();
             builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerDependency();
             builder.RegisterFilterProvider();
