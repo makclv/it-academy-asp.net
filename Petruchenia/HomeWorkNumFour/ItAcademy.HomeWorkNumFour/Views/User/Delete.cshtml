@@ -1,0 +1,19 @@
+﻿@model ItAcademy.HomeWorkNumFour.Models.EntityFramework.DeleteUser
+
+@using (Html.BeginForm("Delete", "User", FormMethod.Post))
+{
+<dl>
+    <dt>
+        @Html.HiddenFor(m => m.UserId)
+    <dt>
+    <dt>
+        @Html.DisplayFor(model => model.FName)
+    </dt>
+    <dt>
+        @Html.DisplayFor(model => model.LName)
+    </dt>
+
+</dl>
+
+<p><input type="submit" value="Yes, delete" /></p>
+}

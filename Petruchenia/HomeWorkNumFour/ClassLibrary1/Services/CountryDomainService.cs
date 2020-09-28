@@ -2,20 +2,25 @@
 using Domain.Entites;
 using Domain.Repository;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace ClassLibrary1.Services
 {
     public class CountryDomainService : ICountryDomainService
     {
-        private readonly ICountryRepository countryRepository; 
+        private readonly ICountryRepository countryRepository;
+
         public CountryDomainService (ICountryRepository countryRepository)
         {
             this.countryRepository = countryRepository;
         }
 
-        public List<User> GetUsersByCountry(string country)
+        public SelectList GetAllCountries()
         {
-            return countryRepository.GetUsersByCountry(country);
+            List<Country> sities = countryRepository.GetAll();
+            var listItems = new SelectList(sities, "CountryId", "CountryName");
+            return listItems;
         }
     }
 }

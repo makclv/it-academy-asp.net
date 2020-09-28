@@ -12,9 +12,9 @@ namespace Data.Repositories
         {
         }
 
-        public List<User> GetUsersByCountry(string country)
+        public List<Country> GetAll()
         {
-            throw new System.NotImplementedException();
+            return GetAllFromDb().ToList();
         }
     }
 }

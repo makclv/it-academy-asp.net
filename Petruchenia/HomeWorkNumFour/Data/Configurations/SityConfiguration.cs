@@ -17,7 +17,7 @@ namespace Data.Configurations
 
             HasKey(s => s.SityId);
 
-            Property(p => p.SityName).IsRequired().HasMaxLength(25);
+            Property(p => p.SityName);
 
             HasRequired(c => c.Country)
                 .WithMany(c => c.Sities)

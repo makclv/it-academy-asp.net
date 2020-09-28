@@ -5,6 +5,6 @@ namespace Domain.Repository
 {
     public interface ISityRepository : IBaseRepository<Sity>
     {
-        List<User> GetUsersBySity(string sity);
+        List<Sity> GetAll();
     }
 }

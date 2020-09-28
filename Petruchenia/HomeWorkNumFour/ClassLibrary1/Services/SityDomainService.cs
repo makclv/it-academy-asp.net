@@ -2,6 +2,9 @@
 using Domain.Entites;
 using Domain.Repository;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+
 namespace ClassLibrary1.Services
 {
     public class SityDomainService : ISityDomainService
@@ -12,9 +15,11 @@ namespace ClassLibrary1.Services
         {
             this.sityRepository = sityRepository;
         }
-        public List<User> GetUsersBySity(string sity)
+        public SelectList GetAllSities()
         {
-            return sityRepository.GetUsersBySity(sity);
+            List<Sity> sities = sityRepository.GetAll();
+            var listItems = new SelectList(sities, "SityId", "SityName");
+            return listItems;
         }
     }
 }

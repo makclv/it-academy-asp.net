@@ -13,8 +13,8 @@ namespace ClassLibrary1.Services
 
         public UserDomainService(IUserRepository userRepository, IUnitOfWork unitOfWork)
         {
-            this.userRepository = userRepository;
             this.unitOfWork = unitOfWork;
+            this.userRepository = userRepository;
         }
 
         public List<User> GetUserByLastName(string name)
@@ -22,10 +22,32 @@ namespace ClassLibrary1.Services
             return userRepository.GetUserByLastName(name);
         }
 
-        public void AddUser (User user)
+        public void Create(User user)
         {
-            userRepository.Create(user);
-            unitOfWork.SaveChanges();
+            userRepository.CreateUser(user);
+        }
+
+        public User GetById(int Id)
+        {
+            return userRepository.GetById(Id);
+        }
+
+        public void EditUser(User user)
+        {
+            userRepository.EditUser(user);
+        }
+
+        public List<User> GetAll()
+        {
+            return userRepository.GetAll();
+        }
+
+        public void DeleteUser(int Id)
+        {
+            userRepository.Delete(
+                userRepository.GetById(Id)
+                );
+
         }
     }
 }

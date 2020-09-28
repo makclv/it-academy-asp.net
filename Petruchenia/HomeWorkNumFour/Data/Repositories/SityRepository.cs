@@ -1,11 +1,8 @@
 ﻿using Domain.Entites;
 using Domain.Repository;
 using Domain.UnitOfWork;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
@@ -15,9 +12,9 @@ namespace Data.Repositories
         {
         }
 
-        public List<User> GetUsersBySity(string sity)
+        public List<Sity> GetAll()
         {
-            throw new NotImplementedException();
+            return GetAllFromDb().ToList(); ;
         }
     }
 }

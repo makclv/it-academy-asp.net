@@ -3,6 +3,7 @@ using ClassLibrary1.Services;
 using ClassLibrary1.Services.Interfaces;
 using Domain.Entites;
 using Domain.UnitOfWork;
+using ItAcademy.HomeWorkNumFour.Models.CRUD;
 using ItAcademy.HomeWorkNumFour.Models.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -28,9 +29,9 @@ namespace ItAcademy.HomeWorkNumFour.Service.Interface
 
             return usersViewModel;
         }
-        public void AddUser (User user)
+        public void Create (User user)
         {
-            userDomainService.AddUser(user);
+            userDomainService.Create(user);
             unitOfWork.SaveChanges();
         }
     }

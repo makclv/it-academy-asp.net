@@ -1,0 +1,35 @@
+﻿@model ItAcademy.HomeWorkNumFour.Models.EntityFramework.EditUser
+
+<h3>Edite</h3>
+
+@using (Html.BeginForm("Edit", "User", FormMethod.Post))
+{
+
+    @Html.HiddenFor(m => m.UserId)
+
+    @Html.LabelFor(m => m.FName, "First name:")
+    @Html.EditorFor(m => m.FName)
+    <br>
+    @Html.LabelFor(m => m.LName, "Last name:")
+    @Html.EditorFor(m => m.LName)
+    <br>
+    @Html.LabelFor(m => m.Phone, "Phone:")
+    @Html.EditorFor(m => m.Phone)
+    <br>
+    @Html.LabelFor(m => m.Email, "Email:")
+    @Html.EditorFor(m => m.Email)
+    <br>
+    @Html.LabelFor(m => m.Title, "Title:")
+    @Html.EnumDropDownListFor(model => model.Title)
+    <br>
+    @Html.LabelFor(m => m.Country, "Country:")
+    @Html.DropDownListFor(model => model.Country, Model.CountriesDDL, "Please select")
+    <br>
+    @Html.LabelFor(m => m.Sity, "Sity:")
+    @Html.DropDownListFor(model => model.Sity, Model.SitiesDDL, "Please select")
+    <br>
+    @Html.LabelFor(m => m.Comment, "Comment:")
+    @Html.EditorFor(m => m.Comment, "Opinion/Comment")
+    <br>
+
+}@Html.ActionLink("Edit", "Edit")

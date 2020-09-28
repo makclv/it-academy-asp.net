@@ -1,4 +1,5 @@
 ﻿using System;
+using ClassLibrary1.Entities;
 using Data.Context;
 using Data.Repositories;
 using Data.UnitOfWork;

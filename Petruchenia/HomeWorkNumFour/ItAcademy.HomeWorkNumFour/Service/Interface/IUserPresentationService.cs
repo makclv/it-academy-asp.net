@@ -1,4 +1,5 @@
-﻿using ItAcademy.HomeWorkNumFour.Models.EntityFramework;
+﻿using ItAcademy.HomeWorkNumFour.Models.CRUD;
+using ItAcademy.HomeWorkNumFour.Models.EntityFramework;
 using System.Collections.Generic;
 
 namespace ItAcademy.HomeWorkNumFour.Service.Interface

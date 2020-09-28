@@ -18,16 +18,14 @@ namespace Data.Configurations
 
         HasKey(s => s.UserId);
 
-        Property(c => c.FName).IsRequired().HasColumnName("Firs Name").HasMaxLength(15);
-        Property(c => c.LName).IsRequired().HasColumnName("Last Name").HasMaxLength(15);
+        Property(c => c.FName).IsRequired().HasColumnName("Firs Name");
+        Property(c => c.LName).IsRequired().HasColumnName("Last Name");
 
-        Property(c => c.Email).IsRequired().HasMaxLength(30);
-        HasIndex(c => c.Email).IsUnique(true);
+        Property(c => c.Email).IsRequired();
 
-        Property(c => c.Phone).IsRequired().HasMaxLength(30);
-        HasIndex(c => c.Phone).IsUnique(true);
+        Property(c => c.Phone).IsRequired();
 
-        Property(c => c.Comment).IsOptional().HasMaxLength(500);
+        Property(c => c.Comment).IsOptional();
 
         HasRequired(c => c.Sity)
                 .WithMany(c => c.Users)

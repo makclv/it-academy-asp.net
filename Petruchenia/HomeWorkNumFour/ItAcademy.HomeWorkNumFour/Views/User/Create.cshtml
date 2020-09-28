@@ -1,0 +1,30 @@
+﻿@model ItAcademy.HomeWorkNumFour.Models.EntityFramework.CreateUser
+
+@using (Html.BeginForm("Create", "User", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.FName, "First name:")
+    @Html.EditorFor(m => m.FName, "First name")
+    <br>
+    @Html.LabelFor(m => m.LName, "Last name:")
+    @Html.EditorFor(m => m.LName, "Last name")
+    <br>
+    @Html.LabelFor(m => m.Phone, "Phone:")
+    @Html.EditorFor(m => m.Phone, "+375(00)...")
+    <br>
+    @Html.LabelFor(m => m.Email, "Email:")
+    @Html.EditorFor(m => m.Email, "example@gmail.com")
+    <br>
+    @Html.LabelFor(m => m.Title, "Title:")
+    @Html.EnumDropDownListFor(model => model.Title, "Please select")
+    <br>
+    @Html.LabelFor(m => m.Country, "Country:")
+    @Html.DropDownListFor(model => model.CountryId, Model.CountriesDDL, "Please select")
+    <br>
+    @Html.LabelFor(m => m.Sity, "Sity:")
+    @Html.DropDownListFor(model => model.SityId,  Model.SitiesDDL, "Please select")
+    <br>
+    @Html.LabelFor(m => m.Comment, "Comment:")
+    @Html.EditorFor(m => m.Comment, "Opinion/Comment")
+    <br>
+    <p><input type="submit" value="Create" /></p>
+}

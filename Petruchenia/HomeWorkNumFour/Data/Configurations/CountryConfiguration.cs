@@ -16,8 +16,7 @@ namespace Data.Configurations
 
             HasKey(s => s.CountryId);
 
-            Property(p => p.CountryName).IsRequired().HasMaxLength(25);
-            HasIndex(c => c.CountryName).IsUnique(true);
+            Property(p => p.CountryName);
         }
     }
 }

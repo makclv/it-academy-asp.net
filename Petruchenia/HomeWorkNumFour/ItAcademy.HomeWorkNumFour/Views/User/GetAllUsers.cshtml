@@ -1,0 +1,51 @@
+﻿@model List<ItAcademy.HomeWorkNumFour.Models.CRUD.UserViewModel>
+
+
+<table class="table">
+    <tr>
+        <td></td>
+        <td>Name</td>
+        <td>Last name</td>
+        <td>Title</td>
+        <td>CountryName</td>
+        <td>CityName</td>
+        <td>Phone</td>
+        <td>Email</td>
+        <td>Action</td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.HiddenFor(modelItem => item.UserId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Country.CountryName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Sity.SityName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Phone)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+    </td>
+</tr>
+    }
+</table>
+@Html.ActionLink("Create", "Create")

@@ -5,6 +5,6 @@ namespace Domain.Repository
 {
     public interface ICountryRepository : IBaseRepository<Country>
     {
-        List<User> GetUsersByCountry(string country);
+        List<Country> GetAll();
     }
 }

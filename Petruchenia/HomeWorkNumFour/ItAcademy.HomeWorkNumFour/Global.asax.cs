@@ -3,6 +3,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using AutoMapper;
 using ItAcademy.HomeWorkNumFour.App_Start;
+using ItAcademy.HomeWorkNumFour.Util;
 
 namespace ItAcademy.HomeWorkNumFour
 {
@@ -14,6 +15,8 @@ namespace ItAcademy.HomeWorkNumFour
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            AutofacConfig.ConfigureContainer();
 
             Mapper.Initialize(cfg =>
             {

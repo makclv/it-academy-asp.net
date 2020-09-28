@@ -1,8 +1,11 @@
-﻿using ClassLibrary1.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-namespace Domain.Entites
+namespace ItAcademy.HomeWorkNumFour.Models.CRUD
 {
-    public class User
+    public class UserViewModel
     {
         public int UserId { get; set; }
         public string FName { get; set; }
@@ -10,8 +13,8 @@ namespace Domain.Entites
         public string Phone { get; set; }
         public string Email { get; set; }
         public Title Title { get; set; }
-        public Country Country { get; set; }
-        public Sity Sity { get; set; }
+        public ViewCountry Country { get; set; }
+        public ViewSity Sity { get; set; }
         public string Comment { get; set; }
     }
 }

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ItAcademy.HomeWorkNumFour.Models.EntityFramework
+namespace ItAcademy.HomeWorkNumFour.Models.CRUD
 {
-    public class CountryViewModel
+    public class ViewCountry
     {
         public int CountryId { get; set; }
         public string CountryName { get; set; }
-        public List<SityViewModel> Sities { get; set; }
+        public List<ViewSity> Sities { get; set; }
         public List<UserViewModel> Users { get; set; }
     }
 }

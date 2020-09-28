@@ -2,6 +2,7 @@
 using Domain.Repository;
 using System.Data.Entity;
 using System.Linq;
+using System.Data.Entity.Migrations;
 
 namespace Data.Repositories
 {
@@ -34,7 +35,12 @@ namespace Data.Repositories
             return DbSet().Find(Id);
         }
 
-        protected virtual IQueryable<T> GetAll()
+        public void Edit(T item)
+        {
+            DbSet().AddOrUpdate(item);
+        }
+
+        protected virtual IQueryable<T> GetAllFromDb()
         {
             return DbSet();
         }
