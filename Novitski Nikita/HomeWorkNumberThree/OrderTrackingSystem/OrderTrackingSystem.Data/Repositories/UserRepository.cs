@@ -48,11 +48,38 @@ namespace OrderTrackingSystem.Data.Repositories
 
         }
 
+        public bool IsUniquePhone(int id, string phone)
+        {
+            if (Get(id).Phone == phone)
+            {
+                return true;
+            }
+            else
+            {
+                return !GetQueryableItems().Any(c => c.Phone == phone);
+            }
+        }
+
+        public bool IsUniqueEmail(int id,string email)
+        {
+            if(Get(id).Email == email)
+            {
+                return true;
+            }
+            else
+            {
+                return !GetQueryableItems().Any(c => c.Email == email);
+            }
+        }
+
         public bool IsUniqueEmail(string email)
         {
-            return !GetQueryableItems().Any(c => c.Email == email);
-
+            
+              return !GetQueryableItems().Any(c => c.Email == email);
+            
         }
+
+
 
         public  List<UserFullName> GetFullNames()
         {
@@ -63,6 +90,20 @@ namespace OrderTrackingSystem.Data.Repositories
             }).ToList();
 
         }
+
         
+        public bool IsUniqueFullName(int id,string firstName, string lastName)
+        {
+            var user = Get(id);
+            if (user.FirstName == firstName && user.LastName == lastName)
+            {
+                return true;
+            }
+            else
+            {
+                return !GetQueryableItems().Any(c => c.FirstName == firstName && c.LastName == lastName);
+            }
+        }
+
     }
 }

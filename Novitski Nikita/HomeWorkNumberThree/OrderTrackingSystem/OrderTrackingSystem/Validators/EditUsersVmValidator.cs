@@ -41,7 +41,7 @@ namespace OrderTrackingSystem.Validators
                 .MaximumLength(30).WithMessage("Phone can have a max of 30 characters.")
                 .Must(IsUniqueEmail).WithMessage("This email already exists");
 
-            RuleFor(x => x.Title).
+            RuleFor(x => x.UserTitle).
                 NotNull().WithMessage("Please fill in the field.");
 
             RuleFor(x => x.Comments).
@@ -87,19 +87,20 @@ namespace OrderTrackingSystem.Validators
 
         private bool IsUniqueFullName(EditUsersViewModel usersViewModel)
         {
-            return userDomainService.IsUniqueFullNameNotCheckingYourself($"{usersViewModel.FirstName}+{usersViewModel.LastName}");
+            return userDomainService.IsUniqueFullName(usersViewModel.Id, usersViewModel.FirstName, usersViewModel.LastName);
 
         }
 
-        private bool IsUniqueEmail(string email)
+        private bool IsUniqueEmail(EditUsersViewModel editUsers, string email)
         {
-            return userDomainService.IsUniqueEmailNotCheckingYourself(email);
+            return userDomainService.IsUniqueEmailNotCheckingYourself(editUsers.Id, email);
 
         }
 
-        private bool IsUniquePhone(string phone)
+
+        private bool IsUniquePhone(EditUsersViewModel editUsers,string phone)
         {
-            return userDomainService.IsUniquePhoneNotCheckingYourself(phone);
+            return userDomainService.IsUniquePhoneNotCheckingYourself(editUsers.Id,phone);
 
         }
     }

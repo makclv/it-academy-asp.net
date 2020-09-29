@@ -36,7 +36,7 @@ namespace OrderTrackingSystem.Validators
                 .MaximumLength(30).WithMessage("Phone can have a max of 30 characters.")
                 .Must(IsUniqueEmail).WithMessage("This email already exists");
 
-            RuleFor(x => x.Title).
+            RuleFor(x => x.UserTitle).
                 NotNull().WithMessage("Please fill in the field.");
 
             RuleFor(x => x.Comments).

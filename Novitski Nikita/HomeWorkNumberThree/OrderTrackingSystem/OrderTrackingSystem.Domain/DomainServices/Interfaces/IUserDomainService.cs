@@ -14,10 +14,12 @@ namespace OrderTrackingSystem.Domain.DomainServices.Interfaces
         bool IsUniquePhone(string phone);
         bool IsUniqueEmail(string email);
         bool IsUniqueFullName(string fullName);
-        bool IsUniqueFullNameNotCheckingYourself(string fullName);
+        //bool IsUniqueFullNameNotCheckingYourself(string fullName);
+        bool IsUniqueFullName(int id, string firstName, string lastName);
         bool IsCityBelongsCountry(int countryId, int cityId);
-        bool IsUniquePhoneNotCheckingYourself(string phone);
-        bool IsUniqueEmailNotCheckingYourself(string email);
+        //bool IsUniquePhoneNotCheckingYourself(string phone);
+        bool IsUniqueEmailNotCheckingYourself(int id,string email);
+        bool IsUniquePhoneNotCheckingYourself(int id, string phone);
 
     }
 }

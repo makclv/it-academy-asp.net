@@ -13,8 +13,6 @@ namespace OrderTrackingSystem.Domain.DomainServices
         private readonly ICountryDomainService countryDomainService;
         private readonly IUnitOfWork unitOfWork;
 
-        private User oldUserData;
-
         public UserDomainService(IUserRepository userRepository, IUnitOfWork unitOfWork, ICityDomainService cityDomainService, ICountryDomainService countryDomainService)
         {
             this.userRepository = userRepository;
@@ -39,17 +37,14 @@ namespace OrderTrackingSystem.Domain.DomainServices
 
         public bool VerificationUserId(int id)
         {
-            if(userRepository.IsExistsUser(id))
-            {
-                oldUserData = userRepository.Get(id);
-                return true;
-            }
-            return false;
+            return userRepository.IsExistsUser(id);
+
         }
 
         public void EditUser()
         {
             unitOfWork.SaveChanges();
+
         }
 
         public User GetUserWithAllAttachments(int id)
@@ -71,21 +66,23 @@ namespace OrderTrackingSystem.Domain.DomainServices
 
         }
 
-        public bool IsUniquePhoneNotCheckingYourself(string phone)
+        //public bool IsUniquePhoneNotCheckingYourself(string phone)
+        //{
+        //    if(phone == oldUserData.Phone)
+        //    {
+        //        return true;
+        //    }
+        //    return userRepository.IsUniquePhone(phone);
+        //}
+
+        public bool IsUniquePhoneNotCheckingYourself(int id, string phone)
         {
-            if(phone == oldUserData.Phone)
-            {
-                return true;
-            }
-            return userRepository.IsUniquePhone(phone);
+            return userRepository.IsUniquePhone(id, phone);
         }
-        public bool IsUniqueEmailNotCheckingYourself(string email)
+
+        public bool IsUniqueEmailNotCheckingYourself(int id,string email)
         {
-            if (email == oldUserData.Email)
-            {
-                return true;
-            }
-            return userRepository.IsUniqueEmail(email);
+            return userRepository.IsUniqueEmail(id,email);
         }
 
         public bool IsUniqueEmail(string email)
@@ -104,26 +101,33 @@ namespace OrderTrackingSystem.Domain.DomainServices
 
         }
 
-        public bool IsUniqueFullNameNotCheckingYourself(string fullName)
+        public bool IsUniqueFullName(int id,string firstName, string lastName)
         {
-            if(GetUserFullName() == fullName)
-            {
-                return true;
-            }
-            else
-            {
-                List<string> allFullNames = new List<string>();
-                userRepository.GetFullNames()
-                    .ForEach(c => allFullNames.Add($"{c.FirstName}+{c.LastName}"));
 
-                return !allFullNames.Contains(fullName);
-            }    
+            return userRepository.IsUniqueFullName(id, firstName, lastName);
+
         }
 
-        private string GetUserFullName()
-        {
-            return  $"{oldUserData.FirstName}+{oldUserData.LastName}";
-        }
+        //public bool IsUniqueFullNameNotCheckingYourself(string fullName)
+        //{
+        //    if(GetUserFullName() == fullName)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        List<string> allFullNames = new List<string>();
+        //        userRepository.GetFullNames()
+        //            .ForEach(c => allFullNames.Add($"{c.FirstName}+{c.LastName}"));
+
+        //        return !allFullNames.Contains(fullName);
+        //    }    
+        //}
+
+        //private string GetUserFullName()
+        //{
+        //    return  $"{oldUserData.FirstName}+{oldUserData.LastName}";
+        //}
 
         public bool IsCityBelongsCountry(int countryId, int cityId)
         {

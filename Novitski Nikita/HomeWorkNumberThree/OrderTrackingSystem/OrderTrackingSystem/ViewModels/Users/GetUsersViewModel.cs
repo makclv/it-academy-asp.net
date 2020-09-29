@@ -7,7 +7,7 @@ namespace OrderTrackingSystem.ViewModels.Users
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Title Title { get; set; }
+        public Title UserTitle { get; set; }
         public Country Country { get; set; }
         public City City { get; set; }
 

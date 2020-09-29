@@ -19,7 +19,7 @@ namespace OrderTrackingSystem.ViewModels.Users
         [UIHint("MultilineText")]
         public string Comments { get; set; }
 
-        public Title Title { get; set; }
+        public Title UserTitle { get; set; }
 
         public int CityId { get; set; }
         public int CountryId { get; set; }

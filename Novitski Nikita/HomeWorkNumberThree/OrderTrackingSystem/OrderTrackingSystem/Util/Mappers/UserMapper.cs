@@ -19,7 +19,7 @@ namespace OrderTrackingSystem.Util.Mappers
                 Phone = userVm.Phone,
                 Email =userVm.Email,
                 Comments = userVm.Comments,
-                Title= userVm.Title
+                Title= userVm.UserTitle
 
             };
         }
@@ -30,7 +30,7 @@ namespace OrderTrackingSystem.Util.Mappers
             {
                 Id = user.Id,
                 Name = $"{user.FirstName} {user.LastName}",
-                Title = user.Title,
+                UserTitle = user.Title,
                 Country = user.Country,
                 City = user.City,
                 Phone = user.Phone,
@@ -52,7 +52,7 @@ namespace OrderTrackingSystem.Util.Mappers
                 Comments = user.Comments,
                 CityId = user.City.Id,
                 CountryId = user.Country.Id,
-                Title = user.Title
+                UserTitle = user.Title
 
             };
         }
@@ -66,7 +66,7 @@ namespace OrderTrackingSystem.Util.Mappers
             user.Phone = userVm.Phone;
             user.Email = userVm.Email;
             user.Comments = userVm.Comments;
-            user.Title = userVm.Title;
+            user.Title = userVm.UserTitle;
 
 
             return user;
@@ -95,7 +95,7 @@ namespace OrderTrackingSystem.Util.Mappers
                 Comments = user.Comments,
                 City = user.City,
                 Country = user.Country,
-                Title = user.Title
+                UserTitle = user.Title
 
             };
         }
