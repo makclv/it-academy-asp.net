@@ -15,14 +15,11 @@ namespace ItAcademy.HomeWorkNumFour.App_Start
         {
             cfg.CreateMap<User, UserViewModel>();
 
-            cfg.CreateMap<CreateUser, User>()
-                .ForPath(x => x.Country.CountryId, u => u.MapFrom(x =>x.CountryId))
-                .ForPath(x => x.Sity.SityId, u => u.MapFrom(x => x.SityId));
-
-            cfg.CreateMap<User, EditUser>()
-                .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Country))
-                .ForMember(dest => dest.Sity, opt => opt.MapFrom(src => src.Sity));
+            cfg.CreateMap<ViewCountry, Country>();
+            cfg.CreateMap<ViewCity, City>();
+            cfg.CreateMap<CreateUser, User>();
             cfg.CreateMap<EditUser, User>();
+            cfg.CreateMap<User, EditUser>();
 
             cfg.CreateMap<User, DeleteUser>();
         }

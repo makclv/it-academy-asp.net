@@ -12,19 +12,19 @@ namespace ItAcademy.HomeWorkNumFour.Controllers
     public class UserController : Controller
     {
         private readonly ICountryDomainService countryDomainService;
-        private readonly ISityDomainService sityDomainService;
+        private readonly ICityDomainService cityDomainService;
         private readonly IUserDomainService userDomainService;
         private readonly IUnitOfWork unitOfWork;
 
         public UserController(
             ICountryDomainService countryDomainService,
-            ISityDomainService sityDomainService,
+            ICityDomainService cityDomainService,
             IUserDomainService userDomainService,
             IUnitOfWork unitOfWork
             )
         {
             this.countryDomainService = countryDomainService;
-            this.sityDomainService = sityDomainService;
+            this.cityDomainService = cityDomainService;
             this.userDomainService = userDomainService;
             this.unitOfWork = unitOfWork;
         }
@@ -45,7 +45,7 @@ namespace ItAcademy.HomeWorkNumFour.Controllers
         {
             CreateUser createUser = new CreateUser();
             createUser.CountriesDDL = countryDomainService.GetAllCountries();
-            createUser.SitiesDDL = sityDomainService.GetAllSities();
+            createUser.CitiesDDL = cityDomainService.GetAllCities();
             return View(createUser);
         }
 
@@ -53,9 +53,11 @@ namespace ItAcademy.HomeWorkNumFour.Controllers
         public ActionResult Create(CreateUser createUser)
         {
             User user = Mapper.Map<CreateUser, User>(createUser);
-            
+
+            user.City = cityDomainService.GetCityById(user.City.CityId);
+            user.Country = countryDomainService.GetCountryById(user.Country.CountryId);
+
             userDomainService.Create(user);
-            unitOfWork.SaveChanges();
             return RedirectToAction("GetAllUsers");
         }
 
@@ -66,17 +68,21 @@ namespace ItAcademy.HomeWorkNumFour.Controllers
                 (userDomainService.GetById(Id));
 
             editUser.CountriesDDL = countryDomainService.GetAllCountries();
-            editUser.SitiesDDL = sityDomainService.GetAllSities();
+            editUser.CitiesDDL = cityDomainService.GetAllCities();
 
             return View(editUser);
         }
 
         [HttpPost]
-        public ActionResult Edit(CreateUser createUser)
+        public ActionResult Edit(EditUser editeUser )
         {
-            userDomainService.EditUser(Mapper.Map<CreateUser, User>(createUser));
-            unitOfWork.SaveChanges();
-            return View();
+            User user = Mapper.Map<EditUser, User>(editeUser);
+
+            user.City = cityDomainService.GetCityById(user.City.CityId);
+            user.Country = countryDomainService.GetCountryById(user.Country.CountryId);
+
+            userDomainService.EditUser(user);
+            return RedirectToAction("GetAllUsers");
         }
 
         [HttpGet]
@@ -103,7 +109,6 @@ namespace ItAcademy.HomeWorkNumFour.Controllers
         public ActionResult Delete(DeleteUser deleteUser)
         {
             userDomainService.DeleteUser(deleteUser.UserId);
-            unitOfWork.SaveChanges();
             return RedirectToAction("GetAllUsers");
         }
     }

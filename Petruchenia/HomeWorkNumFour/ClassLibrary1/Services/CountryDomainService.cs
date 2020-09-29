@@ -18,9 +18,15 @@ namespace ClassLibrary1.Services
 
         public SelectList GetAllCountries()
         {
-            List<Country> sities = countryRepository.GetAll();
-            var listItems = new SelectList(sities, "CountryId", "CountryName");
+            List<Country> countries = countryRepository.GetAll();
+            var listItems = new SelectList(countries, "CountryId", "CountryName");
             return listItems;
+        }
+
+        public bool AreCityBelongToCountry(int countryId, int cityId)
+        {
+            return countryRepository
+                .GetCountryWithCities(countryId).Cities.Any(x => x.CityId.Equals(cityId));
         }
     }
 }

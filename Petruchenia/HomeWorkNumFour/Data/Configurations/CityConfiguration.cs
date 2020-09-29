@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace Data.Configurations
 {
-    public class SityConfiguration : EntityTypeConfiguration<Sity>
+    public class CityConfiguration : EntityTypeConfiguration<City>
     {
-        public SityConfiguration()
+        public CityConfiguration()
         {
 
-            ToTable("Sity");
+            ToTable("City");
 
-            HasKey(s => s.SityId);
+            HasKey(s => s.CityId);
 
-            Property(p => p.SityName);
+            Property(p => p.CityName);
 
             HasRequired(c => c.Country)
-                .WithMany(c => c.Sities)
+                .WithMany(c => c.Cities)
                 .Map(c => c.MapKey("CountryId"))
                 .WillCascadeOnDelete(false);
 

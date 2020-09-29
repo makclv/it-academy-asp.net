@@ -1,5 +1,12 @@
-﻿@model List<ItAcademy.HomeWorkNumFour.Models.CRUD.UserViewModel>
+﻿@model List < ItAcademy.HomeWorkNumFour.Models.CRUD.UserViewModel >
+    
+@{
+    ViewBag.Title = "All Users";
+}
 
+
+
+<h4> All Users</h4>
 
 <table class="table">
     <tr>
@@ -16,36 +23,103 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.HiddenFor(modelItem => item.UserId)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.FName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.LName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Title)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Country.CountryName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Sity.SityName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Phone)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Email)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
-    </td>
-</tr>
+        <tr>
+            <td>
+                @Html.HiddenFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country.CountryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.CityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <div class="col-md-1">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.UserId }, new { @class = "green" })
+                </div>
+                <div class="col-md-1 col-md-offset-3">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.UserId }, new { @class = "red" })
+                </div>
+            </td>
+        </tr>
     }
 </table>
-@Html.ActionLink("Create", "Create")
+<a href="@Url.Action("Create")" class="green">Create</a>
+
+
+<style>
+    a.green {
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+        color: #fff;
+        display: block;
+        width: 100px;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        padding: 8px 16px;
+        margin: 0px auto;
+        text-decoration: none;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+        -webkit-transition: background-color 0.1s linear;
+        -moz-transition: background-color 0.1s linear;
+        -o-transition: background-color 0.1s linear;
+        transition: background-color 0.1s linear;
+    }
+
+    a.green {
+        background-color: rgb( 43, 153, 91 );
+        border: 1px solid rgb( 33, 126, 74 );
+    }
+
+        a.green:hover {
+            background-color: rgb( 75, 183, 141 );
+        }
+
+    a.red {
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+        color: #fff;
+        display: block;
+        width: 100px;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        padding: 8px 16px;
+        margin: 0px auto;
+        text-decoration: none;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+        -webkit-transition: background-color 0.1s linear;
+        -moz-transition: background-color 0.1s linear;
+        -o-transition: background-color 0.1s linear;
+        transition: background-color 0.1s linear;
+    }
+
+    a.red {
+        background-color: red;
+        border: 1px solid maroon;
+    }
+
+        a.red:hover {
+            background-color: orangered;
+        }
+</style>

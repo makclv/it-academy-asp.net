@@ -12,49 +12,48 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "Data.Context.CoreDbContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Data.Context.CoreDbContext context)
         {
-            Sity California = new Sity() { SityName = "California"};
-            Sity LA = new Sity() { SityName = "Los-Angeles" };
-            Sity SF = new Sity() { SityName = "San Francisco" };
+            City California = new City() { CityName = "California" };
+            City LA = new City() { CityName = "Los-Angeles" };
+            City SF = new City() { CityName = "San Francisco" };
 
-            Sity Poznan = new Sity() { SityName = "Poznan" };
-            Sity Varshava = new Sity() { SityName = "Varshava" };
-            Sity Vrotslav = new Sity() { SityName = "Vrotslav" };
+            City Poznan = new City() { CityName = "Poznan" };
+            City Varshava = new City() { CityName = "Varshava" };
+            City Vrotslav = new City() { CityName = "Vrotslav" };
 
-            Sity Minsk = new Sity() { SityName = "Minsk" };
-            Sity Gomel = new Sity() { SityName = "Gomel" };
-            Sity Vitebsk = new Sity() { SityName = "Vitebsk" };
+            City Minsk = new City() { CityName = "Minsk" };
+            City Gomel = new City() { CityName = "Gomel" };
+            City Vitebsk = new City() { CityName = "Vitebsk" };
 
-            Country USA = new Country() 
+            Country USA = new Country()
             {
                 CountryName = "USA",
-                Sities = new List<Sity> { California, LA, SF }
+                Cities = new List<City> { California, LA, SF }
             };
 
             Country Poland = new Country()
             {
                 CountryName = "Poland",
-                Sities = new List<Sity> { Poznan, Varshava, Vrotslav }
+                Cities = new List<City> { Poznan, Varshava, Vrotslav }
             };
 
             Country Belarus = new Country()
             {
                 CountryName = "Belarus",
-                Sities = new List<Sity> { Minsk, Gomel, Vitebsk }
+                Cities = new List<City> { Minsk, Gomel, Vitebsk }
             };
 
             User potter = new User()
             {
-                FName = "Harry",
-                LName = "Potter",
+                FirstName = "Harry",
+                LastName = "Potter",
                 Phone = "1346578134",
                 Email = "HarryP@magicschool.com",
-                Sity = California,
+                City = California,
                 Country = USA,
                 Title = Title.Mr,
                 Comment = "Avana kedavra"
@@ -62,11 +61,11 @@
 
             User germiona = new User()
             {
-                FName = "Germiona",
-                LName = "Granger",
+                FirstName = "Germiona",
+                LastName = "Granger",
                 Phone = "758373573",
                 Email = "HermionaG@magicschool.com",
-                Sity = LA,
+                City = LA,
                 Country = USA,
                 Title = Title.Mrs,
                 Comment = "Avana kedavra"
@@ -77,7 +76,6 @@
             context.Set<Country>().AddOrUpdate(USA);
             context.Set<User>().AddOrUpdate(potter);
             context.Set<User>().AddOrUpdate(germiona);
-
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method

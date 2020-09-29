@@ -4,6 +4,7 @@ using System.Web.Routing;
 using AutoMapper;
 using ItAcademy.HomeWorkNumFour.App_Start;
 using ItAcademy.HomeWorkNumFour.Util;
+using FluentValidation.Mvc;
 
 namespace ItAcademy.HomeWorkNumFour
 {
@@ -22,6 +23,8 @@ namespace ItAcademy.HomeWorkNumFour
             {
                 AutoMapperConfig.Configure(cfg);
             });
+
+            //FluentValidationModelValidatorProvider.Configure();
         }
     }
 }

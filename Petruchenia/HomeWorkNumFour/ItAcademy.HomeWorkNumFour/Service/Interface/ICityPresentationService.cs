@@ -7,8 +7,8 @@ using System.Web.Mvc;
 
 namespace ItAcademy.HomeWorkNumFour.Service.Interface
 {
-    public interface ISityPresentationService
+    public interface ICityPresentationService
     {
-        IEnumerable<SelectListItem> GetAllSities();
+        IEnumerable<SelectListItem> GetAllCities();
     }
 }

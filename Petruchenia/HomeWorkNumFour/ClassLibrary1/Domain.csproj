@@ -108,20 +108,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Country.cs" />
-    <Compile Include="Entities\Sity.cs" />
+    <Compile Include="Entities\City.cs" />
     <Compile Include="Entities\Title.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IBaseRepository.cs" />
     <Compile Include="Repository\ICountryRepository.cs" />
-    <Compile Include="Repository\ISityRepository.cs" />
+    <Compile Include="Repository\ICityRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
     <Compile Include="Services\CountryDomainService.cs" />
     <Compile Include="Services\Interfaces\IBaseDomainService.cs" />
     <Compile Include="Services\Interfaces\ICountryDomainService.cs" />
-    <Compile Include="Services\Interfaces\ISityDomainService.cs" />
+    <Compile Include="Services\Interfaces\ICityDomainService.cs" />
     <Compile Include="Services\Interfaces\IUserDomainService.cs" />
-    <Compile Include="Services\SityDomainService.cs" />
+    <Compile Include="Services\CityDomainService.cs" />
     <Compile Include="Services\UserDomainService.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
   </ItemGroup>

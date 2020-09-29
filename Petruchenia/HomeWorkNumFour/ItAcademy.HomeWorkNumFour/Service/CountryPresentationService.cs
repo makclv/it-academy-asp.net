@@ -16,7 +16,7 @@ namespace ItAcademy.HomeWorkNumFour.Service
 
         public IEnumerable<SelectListItem> GetAllCountries()
         {
-            return (IEnumerable<SelectListItem>)countryDomainService.GetAllCountries();
+            return countryDomainService.GetAllCountries();
         }
     }
 }

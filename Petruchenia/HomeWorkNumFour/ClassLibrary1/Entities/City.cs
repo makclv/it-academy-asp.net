@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Domain.Entites
 {
-    public class Sity
+    public class City
     {
-        public int SityId { get; set; }
-        public string SityName { get; set; }
+        public int CityId { get; set; }
+        public string CityName { get; set; }
         public Country Country { get; set; }
         public List<User> Users { get; set; }
     }

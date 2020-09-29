@@ -7,13 +7,13 @@ namespace Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddCounriesAndSities : IMigrationMetadata
+    public sealed partial class initialization : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCounriesAndSities));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initialization));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009261559261_AddCounriesAndSities"; }
+            get { return "202009282347299_initialization"; }
         }
         
         string IMigrationMetadata.Source

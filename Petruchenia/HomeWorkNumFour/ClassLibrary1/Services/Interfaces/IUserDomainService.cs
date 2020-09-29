@@ -11,5 +11,9 @@ namespace ClassLibrary1.Services.Interfaces
         void EditUser(User user);
         List<User> GetAll();
         void DeleteUser(int id);
+
+        bool IsUniqueName(string a, string b);
+        bool IsUniqueEmail(string email);
+        bool IsUniquePhone(string phone);
     }
 }

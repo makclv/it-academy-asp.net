@@ -26,13 +26,13 @@ namespace Data.Repositories
 
         public List<User> GetUserByLastName(string name)
         {
-            return GetItems().Where(m => m.LName.Equals(name)).ToList();
+            return GetItems().Where(m => m.LastName.Equals(name)).ToList();
         }
 
         public List<User> GetAll()
         {
 
-            return GetAllFromDb().Include(u => u.Country).Include(u => u.Sity).ToList();
+            return GetAllFromDb().Include(u => u.Country).Include(u => u.City).ToList();
         }
         public void CreateUser (User user)
         {

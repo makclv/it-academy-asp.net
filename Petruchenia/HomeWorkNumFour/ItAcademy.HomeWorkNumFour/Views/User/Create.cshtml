@@ -1,30 +1,95 @@
 ﻿@model ItAcademy.HomeWorkNumFour.Models.EntityFramework.CreateUser
 
-@using (Html.BeginForm("Create", "User", FormMethod.Post))
+@using (Html.BeginForm("Create", "User", FormMethod.Post, new { @class = "form-horizontal" }))
 {
-    @Html.LabelFor(m => m.FName, "First name:")
-    @Html.EditorFor(m => m.FName, "First name")
-    <br>
-    @Html.LabelFor(m => m.LName, "Last name:")
-    @Html.EditorFor(m => m.LName, "Last name")
-    <br>
-    @Html.LabelFor(m => m.Phone, "Phone:")
-    @Html.EditorFor(m => m.Phone, "+375(00)...")
-    <br>
-    @Html.LabelFor(m => m.Email, "Email:")
-    @Html.EditorFor(m => m.Email, "example@gmail.com")
-    <br>
-    @Html.LabelFor(m => m.Title, "Title:")
-    @Html.EnumDropDownListFor(model => model.Title, "Please select")
-    <br>
-    @Html.LabelFor(m => m.Country, "Country:")
-    @Html.DropDownListFor(model => model.CountryId, Model.CountriesDDL, "Please select")
-    <br>
-    @Html.LabelFor(m => m.Sity, "Sity:")
-    @Html.DropDownListFor(model => model.SityId,  Model.SitiesDDL, "Please select")
-    <br>
-    @Html.LabelFor(m => m.Comment, "Comment:")
-    @Html.EditorFor(m => m.Comment, "Opinion/Comment")
-    <br>
-    <p><input type="submit" value="Create" /></p>
+    <h4>Create a new User</h4>
+    <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName, "First name:", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FirstName, "First name", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName, "Last name:", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LastName, "Last name", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Phone, "Phone:", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Phone, "+375(00)...", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, "Email:", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, "example@gmail.com", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title, "Title:", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(model => model.Title, "Please select", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Country.CountryId, "Country:", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Country.CountryId, Model.CountriesDDL, "Please select", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.City.CityId, "City:", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.City.CityId, Model.CitiesDDL, "Please select", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Comment, "Comment:", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Comment, "Opinion/Comment", new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Create" />
+        </div>
+    </div>
 }
+<a href="@Url.Action("GetAllUsers")" class="green">Cancel</a>
+
+<style>
+    a.green {
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+        color: #fff;
+        display: block;
+        width: 100px;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        padding: 8px 16px;
+        margin: 0px auto;
+        text-decoration: none;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+        -webkit-transition: background-color 0.1s linear;
+        -moz-transition: background-color 0.1s linear;
+        -o-transition: background-color 0.1s linear;
+        transition: background-color 0.1s linear;
+    }
+
+    a.green {
+        background-color: rgb( 43, 153, 91 );
+        border: 1px solid rgb( 33, 126, 74 );
+    }
+
+        a.green:hover {
+            background-color: rgb( 75, 183, 141 );
+        }
+    </style>

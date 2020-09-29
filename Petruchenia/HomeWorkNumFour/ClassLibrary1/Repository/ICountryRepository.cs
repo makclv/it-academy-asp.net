@@ -6,5 +6,6 @@ namespace Domain.Repository
     public interface ICountryRepository : IBaseRepository<Country>
     {
         List<Country> GetAll();
+        Country GetCountryWithCities(int id);
     }
 }

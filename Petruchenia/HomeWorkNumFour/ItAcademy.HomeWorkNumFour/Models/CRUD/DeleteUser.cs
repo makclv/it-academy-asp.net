@@ -8,7 +8,7 @@ namespace ItAcademy.HomeWorkNumFour.Models.EntityFramework
     public class DeleteUser
     {
         public int UserId { get; set; }
-        public string FName { get; set; }
-        public string LName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

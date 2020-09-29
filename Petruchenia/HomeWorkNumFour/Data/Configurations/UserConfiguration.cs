@@ -18,8 +18,8 @@ namespace Data.Configurations
 
         HasKey(s => s.UserId);
 
-        Property(c => c.FName).IsRequired().HasColumnName("Firs Name");
-        Property(c => c.LName).IsRequired().HasColumnName("Last Name");
+        Property(c => c.FirstName).IsRequired().HasColumnName("Firs Name");
+        Property(c => c.LastName).IsRequired().HasColumnName("Last Name");
 
         Property(c => c.Email).IsRequired();
 
@@ -27,7 +27,7 @@ namespace Data.Configurations
 
         Property(c => c.Comment).IsOptional();
 
-        HasRequired(c => c.Sity)
+        HasRequired(c => c.City)
                 .WithMany(c => c.Users)
                 .Map(m => m.MapKey("CityId"))
                 .WillCascadeOnDelete(false);
