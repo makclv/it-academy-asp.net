@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace ItAcademy.Hw.Users.Data.Repositories
 {
@@ -24,6 +25,15 @@ namespace ItAcademy.Hw.Users.Data.Repositories
             unitOfWork.Entry(entityUser).Reference(c => c.Country).Load();
 
             return entityUser;
+
+        }
+
+        public List<User> GetAllWithAllAttachments()
+        {
+            return GetQueryableItems()
+                .Include(c => c.City)
+                .Include(c => c.Country)
+                .ToList();
 
         }
     }

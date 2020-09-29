@@ -43,17 +43,66 @@ namespace ItAcademy.Hw.Users.Client.Util.Mappers
             };
         }
 
-       public static User EditUserViewToUser (UserView UserView, User user)
+       public static User EditCreateUserViewToUser (CreateUserView CreateUserView, User user)
         {
-            user.Name = UserView.Name;
-            user.Surname = UserView.Surname;
-            user.Phone = UserView.Phone;
-            user.Email = UserView.Email;
-            user.Comments = UserView.Comments;
-            user.Title = UserView.Title;
+            user.Name = CreateUserView.Name;
+            user.Surname = CreateUserView.Surname;
+            user.Phone = CreateUserView.Phone;
+            user.Email = CreateUserView.Email;
+            user.Comments = CreateUserView.Comments;
+            user.Title = CreateUserView.Title;
 
 
             return user;
+        }
+
+        public static CreateUserView UserViewToCreateUserView(UserView UserView, CreateUserView CreateUserView)
+        {
+            CreateUserView.Id = UserView.Id;
+            CreateUserView.City = UserView.City;
+            CreateUserView.Country = UserView.Country;
+            CreateUserView.Email = UserView.Email;
+            CreateUserView.Name = UserView.Name;
+            CreateUserView.Phone = UserView.Phone;
+            CreateUserView.Surname = UserView.Surname;
+            CreateUserView.Title = UserView.Title;
+            CreateUserView.Comments = UserView.Comments;
+
+            return CreateUserView;
+        }
+
+        public static UserView CreateUserViewToUserView(CreateUserView CreateUserView)
+        {
+            return new UserView 
+            {
+                Id = CreateUserView.Id,
+                City = CreateUserView.City,
+                Country = CreateUserView.Country,
+                Email = CreateUserView.Email,
+                Name = CreateUserView.Name,
+                Phone = CreateUserView.Phone,
+                Surname = CreateUserView.Surname,
+                Title = CreateUserView.Title,
+                Comments = CreateUserView.Comments
+            };
+            
+        }
+
+        public static User CreateUserViewToUser(CreateUserView CreateUserView)
+        {
+            return new User
+            {
+                Id = CreateUserView.Id,
+                City = CreateUserView.City,
+                Country = CreateUserView.Country,
+                Email = CreateUserView.Email,
+                Name = CreateUserView.Name,
+                Phone = CreateUserView.Phone,
+                Surname = CreateUserView.Surname,
+                Title = CreateUserView.Title,
+                Comments = CreateUserView.Comments
+            };
+            
         }
     }
 }

@@ -41,11 +41,11 @@
             <tr>
                 <th scope="row">@FullName</th>
                 <td>@Html.DisplayFor(b=>a.Title)</td>
-                <td>@Html.DisplayFor(b => a.Country)</td>
-                <td>@Html.DisplayFor(b => a.City)</td>
+                <td>@Html.DisplayFor(b => a.Country.Name)</td>
+                <td>@Html.DisplayFor(b => a.City.Name)</td>
                 <td>@a.Phone</td>
                 <td>@a.Email</td>
-                <td>@Html.ActionLink("Edit","Edit",new { id=a.Id },null) @Html.Partial("confirmation",a.Id) @*@Html.ActionLink("Delete","Delete", new { id=a.Id },null)*@</td>
+                <td>@Html.ActionLink("Edit","Edit",new { id=a.Id },null) @Html.Partial("confirmation", a) @*@Html.ActionLink("Delete","Delete", new { id=a.Id },null)*@</td>
             </tr>
 
                     

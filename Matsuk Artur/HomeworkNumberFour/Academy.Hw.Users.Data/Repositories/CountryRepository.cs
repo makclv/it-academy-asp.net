@@ -16,5 +16,15 @@ namespace ItAcademy.Hw.Users.Data.Repositories
         {
             this.unitOfWork = unitOfWork;
         }
+
+        public Country GetCountryWithCities(object id)
+        {
+
+            var entityCountry = Get(id);
+            unitOfWork.Entry(entityCountry).Collection(c => c.Cities).Load();
+
+            return entityCountry;
+
+        }
     }
 }

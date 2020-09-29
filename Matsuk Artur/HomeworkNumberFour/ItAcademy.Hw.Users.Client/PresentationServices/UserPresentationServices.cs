@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ItAcademy.Hw.Users.Client.PresentationServices
 {
@@ -22,14 +23,38 @@ namespace ItAcademy.Hw.Users.Client.PresentationServices
             this.countryDomainService = countryDomainService;
             this.cityDomainService = cityDomainService;
         }
-        public void ChangeUser(UserView UserView)
+        public void ChangeUser(CreateUserView CreateUserView)
         {
-            User user = userDomainService.GetUser(UserView.Id);
-            user = Mapper.EditUserViewToUser(UserView, user);
-            user.City = cityDomainService.GetCity(UserView.City.Id);
-            user.Country = countryDomainService.GetCountry(UserView.Country.Id);
+            User user = userDomainService.GetUser(CreateUserView.Id);
+            user = Mapper.EditCreateUserViewToUser(CreateUserView, user);
+            user.City = cityDomainService.GetCity(CreateUserView.CityId);
+            user.Country = countryDomainService.GetCountry(CreateUserView.CountryId);
 
             userDomainService.ChangeUser();
         }
+
+        public void AddUser(CreateUserView createUserView)
+        {
+            User user = Mapper.CreateUserViewToUser(createUserView);
+            user.City = cityDomainService.GetCity(createUserView.CityId);
+            user.Country = countryDomainService.GetCountry(createUserView.CountryId);
+
+            userDomainService.AddUser(user);
+
+        }
+
+        public CreateUserView CreateEmptyUser()
+        {
+            CreateUserView CreateUserView = new CreateUserView
+            {
+                SelectListCities = new SelectList(cityDomainService.GetCities(), "Id", "Name"),
+                SelectListCountries = new SelectList(countryDomainService.GetCountries(), "Id", "Name")
+            };
+
+            return CreateUserView;
+        }
+
+      
+
     }
 }

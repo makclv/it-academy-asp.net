@@ -13,12 +13,16 @@ namespace ItAcademy.Hw.Users.Client.Controllers
     public class UserController : Controller
     {
         private readonly IUserDomainService userDomainService;
-        readonly IUserPresentationServices userPresentationServices;
+       private readonly IUserPresentationServices userPresentationServices;
+        private readonly ICityDomainService cityDomainService;
+        private readonly ICountryDomainService countryDomainService;
         // GET: User
-        public UserController(IUserDomainService userDomainService, IUserPresentationServices userPresentationServices)
+        public UserController(IUserDomainService userDomainService, IUserPresentationServices userPresentationServices, ICityDomainService cityDomainService, ICountryDomainService countryDomainService)
         {
             this.userDomainService = userDomainService;
             this.userPresentationServices = userPresentationServices;
+            this.cityDomainService = cityDomainService;
+            this.countryDomainService = countryDomainService;
         }
         public ActionResult Index()
         {
@@ -32,46 +36,58 @@ namespace ItAcademy.Hw.Users.Client.Controllers
             
             return View("View",UserViewList );
         }
-
+        [HttpGet]
         public ViewResult Edit(int id)
         {
-            UserView UserView = Mapper.UserToUserView(userDomainService.FindUser(id));
-            return View("Edit",UserView);
+            CreateUserView CreateUserView = new CreateUserView
+            {
+                SelectListCities = new SelectList(cityDomainService.GetCities(), "Id", "Name"),
+                SelectListCountries = new SelectList(countryDomainService.GetCountries(), "Id", "Name")
+            };
+            CreateUserView = Mapper.UserViewToCreateUserView(Mapper.UserToUserView(userDomainService.FindUser(id)),CreateUserView);
+            return View("Edit",CreateUserView);
+            
         }
 
         [HttpPost]
-        public ActionResult Edit(UserView UserView)
+        public ActionResult Edit(CreateUserView CreateUserView)
         {
 
             if (ModelState.IsValid)
             {
 
-                userPresentationServices.ChangeUser(UserView);
+                userPresentationServices.ChangeUser(CreateUserView);
                 return RedirectToAction("Index");
             }
 
-            return View("Edit", UserView);
+            return View("Edit", CreateUserView);
         }
-
+        [HttpGet]
         public ActionResult Delete(int id)
         {
-             userDomainService.DeleteUser(id);
+            userDomainService.DeleteUser(id);
 
             return Redirect("/User/Index"); 
             
         }
 
+        [HttpGet]
         public ActionResult Add()
         {
-            UserView UserView = new UserView();
-            return View("Edit", UserView);
+            
+            return View("Edit", userPresentationServices.CreateEmptyUser());
         }
 
         [HttpPost]
-        public ActionResult Add(UserView UserView)
+        public ActionResult Add(CreateUserView CreateUserView)
         {
-            userDomainService.AddUser(Mapper.UserViewToUser(UserView));
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                userPresentationServices.AddUser(CreateUserView);
+                return RedirectToAction("Index");
+            }
+            return View("Edit", userPresentationServices.CreateEmptyUser());
+
         }
     }
 }

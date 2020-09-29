@@ -27,5 +27,20 @@ namespace ItAcademy.Hw.Users.Domain.DomainServices
         {
             return countryRepository.Get(id);
         }
+
+        public Country GetCountryWithCities(int id)
+        {
+            return countryRepository.GetCountryWithCities(id);
+
+        }
+
+        public bool IsCityBelongsToCountry(int countryId, int cityId)
+        {
+            return countryRepository
+                .GetCountryWithCities(countryId)
+                .Cities
+                .Any(c => c.Id == cityId);
+
+        }
     }
 }

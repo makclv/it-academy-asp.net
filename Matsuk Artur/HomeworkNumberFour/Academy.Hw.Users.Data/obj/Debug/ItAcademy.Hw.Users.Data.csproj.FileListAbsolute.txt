@@ -15,3 +15,20 @@ C:\Users\amats\source\repos\123\HomeworkNumberFour\Academy.Hw.Users.Data\obj\Deb
 C:\Users\amats\source\repos\123\HomeworkNumberFour\Academy.Hw.Users.Data\obj\Debug\ItAcademy.Hw.Users.Data.pdb
 C:\Users\amats\source\repos\123\HomeworkNumberFour\Academy.Hw.Users.Data\obj\Debug\ItAcademy.Hw.Users.Data.Migrations.InitialSetup.resources
 C:\Users\amats\source\repos\123\HomeworkNumberFour\Academy.Hw.Users.Data\obj\Debug\ItAcademy.Hw.Users.Data.csproj.GenerateResource.cache
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\bin\Debug\ItAcademy.Hw.Users.Data.dll.config
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\bin\Debug\ItAcademy.Hw.Users.Data.dll
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\bin\Debug\ItAcademy.Hw.Users.Data.pdb
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\bin\Debug\EntityFramework.dll
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\bin\Debug\ItAcademy.Hw.Users.Domain.dll
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\bin\Debug\ItAcademy.Hw.Users.Domain.pdb
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\bin\Debug\ItAcademy.Hw.Users.Domain.dll.config
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\bin\Debug\EntityFramework.xml
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\obj\Debug\ItAcademy.Hw.Users.Data.csprojAssemblyReference.cache
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\obj\Debug\ItAcademy.Hw.Users.Data.Migrations.InitialSetup.resources
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\obj\Debug\ItAcademy.Hw.Users.Data.csproj.GenerateResource.cache
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\obj\Debug\ItAcademy.Hw.Users.Data.csproj.CoreCompileInputs.cache
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\obj\Debug\ItAcademy.Hw.Users.Data.csproj.CopyComplete
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\obj\Debug\ItAcademy.Hw.Users.Data.dll
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\Academy.Hw.Users.Data\obj\Debug\ItAcademy.Hw.Users.Data.pdb

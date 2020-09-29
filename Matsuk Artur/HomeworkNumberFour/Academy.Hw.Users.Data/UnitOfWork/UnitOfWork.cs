@@ -3,9 +3,10 @@ using ItAcademy.Hw.Users.Domain.UnitOfWork;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
+
 namespace ItAcademy.Hw.Users.Data.UnitOfWork
 {
-   public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly IMyDbContext db;
 
@@ -28,7 +29,12 @@ namespace ItAcademy.Hw.Users.Data.UnitOfWork
 
         public int SaveChanges()
         {
-            return db.SaveChanges();
+            
+                return db.SaveChanges();
+            
+            
+
+
         }
     }
 }

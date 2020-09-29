@@ -12,9 +12,13 @@ namespace ItAcademy.Hw.Users.Domain.DomainServices
     {
         private readonly IUserRepository UserRep;
         private readonly IUnitOfWork unitOfWork;
-        public UserDomainService(IUserRepository UserRep)
+        private readonly ICountryDomainService countryDomainService;
+        public UserDomainService(IUserRepository UserRep, IUnitOfWork unitOfWork, ICountryDomainService countryDomainService)
         {
             this.UserRep = UserRep;
+            this.unitOfWork = unitOfWork;
+            this.countryDomainService = countryDomainService;
+
         }
         public void AddUser(User User)
         {
@@ -32,11 +36,12 @@ namespace ItAcademy.Hw.Users.Domain.DomainServices
         public void DeleteUser(int a)
         {
             UserRep.DeleteById(a);
+            unitOfWork.SaveChanges();
         }
 
         public List<User> GetUsers()
         {
-            return UserRep.GetAll();
+            return UserRep.GetAllWithAllAttachments();
            
 
         }
@@ -77,9 +82,9 @@ namespace ItAcademy.Hw.Users.Domain.DomainServices
 
         }
 
-        public bool IsCityBelongsToCountry(User user)
+        public bool IsCityBelongsToCountry(int countryId, int cityId)
         {
-            return user.Country.Cities.Contains(user.City);
+            return countryDomainService.IsCityBelongsToCountry(countryId, cityId);
         }
     }
 }

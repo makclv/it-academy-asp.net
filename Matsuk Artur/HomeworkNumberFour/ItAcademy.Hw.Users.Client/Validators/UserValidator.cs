@@ -28,8 +28,8 @@ namespace ItAcademy.Hw.Users.Client.Validators
                 .Must(IsUniquePhone).WithMessage("This number already exists");
 
             RuleFor(x => x.Email)
-                .NotEmpty().WithMessage("Please specify a phone.")
-                .MaximumLength(30).WithMessage("Phone can have a max of 30 characters.")
+                .NotEmpty().WithMessage("Please specify an email.")
+                .MaximumLength(30).WithMessage("Email can have a max of 30 characters.")
                 .Must(IsUniqueEmail).WithMessage("This email already exists");
 
             RuleFor(x => x.Title).
@@ -45,14 +45,10 @@ namespace ItAcademy.Hw.Users.Client.Validators
             RuleFor(x => x)
                 .Must(IsUniqueName).WithMessage("Full name already exist. Please enter other Name or Surname.");
 
-            RuleFor(x => x)
-                .Must(IsCityBelongsToCountry).WithMessage("This city does not belong to the selected country.");
+           
         }
 
-        private bool IsCityBelongsToCountry(UserView userView)
-        {
-            return userDomainService.IsCityBelongsToCountry(Mapper.UserViewToUser(userView));
-        }
+        
 
         private bool IsUniqueName(UserView userView)
         {

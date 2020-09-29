@@ -10,5 +10,6 @@ namespace ItAcademy.Hw.Users.Domain.Repositories
    public interface IUserRepository : IBaseRepository<User>
     {
         User GetUser(object id);
+        List<User> GetAllWithAllAttachments();
     }
 }

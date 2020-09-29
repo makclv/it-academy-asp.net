@@ -9,6 +9,10 @@ namespace ItAcademy.Hw.Users.Client.PresentationServices.Interfaces
 {
    public interface IUserPresentationServices
     {
-        void ChangeUser(UserView user);
+        void AddUser(CreateUserView createUserView);
+        void ChangeUser(CreateUserView CreateUserView);
+        CreateUserView CreateEmptyUser();
+
+
     }
 }

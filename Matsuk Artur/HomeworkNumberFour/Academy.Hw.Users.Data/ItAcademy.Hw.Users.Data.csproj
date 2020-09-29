@@ -56,7 +56,6 @@
     <Compile Include="Configurations\UserConfig.cs" />
     <Compile Include="Context\IMyDbContext.cs" />
     <Compile Include="Context\MyDbContext.cs" />
-    <Compile Include="Initializer\ContextInitializer.cs" />
     <Compile Include="Migrations\202009240259006_InitialSetup.cs" />
     <Compile Include="Migrations\202009240259006_InitialSetup.designer.cs">
       <DependentUpon>202009240259006_InitialSetup.cs</DependentUpon>

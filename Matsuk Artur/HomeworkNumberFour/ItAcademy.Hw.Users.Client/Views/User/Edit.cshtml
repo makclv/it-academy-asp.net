@@ -1,35 +1,52 @@
 ﻿@using ItAcademy.Hw.Users.Client.Models
-@model UserView
+@model CreateUserView
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <p>
         First Name  @Html.EditorFor(a => a.Name)
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
     </p>
     <p>
         Last Name     @Html.EditorFor(a => a.Surname)
+        @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
     </p>
     <p>
         Phone       @Html.EditorFor(a => a.Phone)
+        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+
     </p>
     <p>
         Email        @Html.EditorFor(a => a.Email)
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
     </p>
     <p>
-        Title        @Html.EnumDropDownListFor(a => a.Title,"Please select")
+        Title        @Html.EnumDropDownListFor(a => a.Title, "Please select")
+        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+
     </p>
     <p>
-        Country        @Html.EnumDropDownListFor(a => a.Country)
+        Country        @Html.DropDownListFor(model => model.CountryId, Model.SelectListCountries, "Please select",null)
+                        @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
     </p>
     <p>
-        City        @Html.EnumDropDownListFor(a => a.City)
+        City        @Html.DropDownListFor(model => model.CityId, Model.SelectListCities, "Please select",null)
+                     @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
     </p>
 
 
     <p>
         Comments        @Html.TextAreaFor(a => a.Comments)
+        @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     </p>
 
     <input type="submit" class="btn btn-primary" value="Отправить" />
 
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }

@@ -1,5 +1,4 @@
 ﻿
-using ItAcademy.Hw.Users.Data.Initializer;
 using System.Data.Entity;
 
 namespace ItAcademy.Hw.Users.Data.Context
@@ -11,7 +10,7 @@ namespace ItAcademy.Hw.Users.Data.Context
         public MyDbContext()
             : base("name=testDb")
         {
-            Database.SetInitializer(new ContextInitializer());
+            
 
         }
 

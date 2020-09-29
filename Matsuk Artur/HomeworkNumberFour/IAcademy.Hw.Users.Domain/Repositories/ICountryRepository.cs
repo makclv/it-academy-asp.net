@@ -9,5 +9,7 @@ namespace ItAcademy.Hw.Users.Domain.Repositories
 {
    public interface ICountryRepository : IBaseRepository<Country>
     {
+
+        Country GetCountryWithCities(object id);
     }
 }

@@ -10,6 +10,10 @@ using ItAcademy.Hw.Users.Client.PresentationServices.Interfaces;
 using ItAcademy.Hw.Users.Domain.UnitOfWork;
 using ItAcademy.Hw.Users.Data.UnitOfWork;
 using ItAcademy.Hw.Users.Data.Context;
+using FluentValidation;
+using ItAcademy.Hw.Users.Client.Validators;
+using FluentValidation.Mvc;
+using ItAcademy.Hw.Users.Client.App_Start.Core;
 
 namespace ItAcademy.Hw.Users.Client.Util.AutoFac
 {
@@ -23,23 +27,44 @@ namespace ItAcademy.Hw.Users.Client.Util.AutoFac
            
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
-            
-            builder.RegisterType<UserDomainService>().As<IUserDomainService>();
-            builder.RegisterType<CountryDomainService>().As<ICountryDomainService>();
-            builder.RegisterType<CityDomainService>().As<ICityDomainService>();
-            builder.RegisterType<UserRepository>().As<IUserRepository>();
-            builder.RegisterType<CityRepository>().As<ICityRepository>();
-            builder.RegisterType<CountryRepository>().As<ICountryRepository>();
-            builder.RegisterType<UserPresentationServices>().As<IUserPresentationServices>();
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
-            builder.RegisterType<MyDbContext>().As<IMyDbContext>();
-            
+
+            builder.RegisterType<UserDomainService>().As<IUserDomainService>().InstancePerDependency();
+            builder.RegisterType<CountryDomainService>().As<ICountryDomainService>().InstancePerDependency();
+            builder.RegisterType<CityDomainService>().As<ICityDomainService>().InstancePerDependency();
+            builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerDependency();
+            builder.RegisterType<CityRepository>().As<ICityRepository>().InstancePerDependency();
+            builder.RegisterType<CountryRepository>().As<ICountryRepository>().InstancePerDependency();
+            builder.RegisterType<UserPresentationServices>().As<IUserPresentationServices>().InstancePerDependency();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
+            builder.RegisterType<MyDbContext>().As<IMyDbContext>().InstancePerLifetimeScope();
+
+            AssemblyScanner.FindValidatorsInAssemblyContaining<UserValidator>()
+                                   .ForEach(result =>
+                                   {
+                                       builder.RegisterType(result.ValidatorType)
+                                       .Keyed<IValidator>(result.InterfaceType)
+                                       .As<IValidator>();
+                                   });
+
+            AssemblyScanner.FindValidatorsInAssemblyContaining<CreateUserValidator>()
+                                  .ForEach(result =>
+                                  {
+                                      builder.RegisterType(result.ValidatorType)
+                                      .Keyed<IValidator>(result.InterfaceType)
+                                      .As<IValidator>();
+                                  });
+
 
 
             var container = builder.Build();
 
             
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            FluentValidationModelValidatorProvider.Configure(config =>
+            {
+                config.ValidatorFactory = new AutofacValidatorFactory(container);
+            });
         }
     }
 }
