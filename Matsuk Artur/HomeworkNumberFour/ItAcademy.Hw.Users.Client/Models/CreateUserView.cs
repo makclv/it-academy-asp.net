@@ -25,8 +25,6 @@ namespace ItAcademy.Hw.Users.Client.Models
         [DataType(DataType.MultilineText)]
         public string Comments { get; set; }
 
-        public int CityId { get; set; }
-        public int CountryId { get; set; }
 
         public SelectList SelectListCities { get; set; }
         public SelectList SelectListCountries { get; set; }

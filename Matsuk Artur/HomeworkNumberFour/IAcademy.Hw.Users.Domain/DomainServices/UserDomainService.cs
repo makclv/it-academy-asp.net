@@ -56,24 +56,24 @@ namespace ItAcademy.Hw.Users.Domain.DomainServices
             return UserRep.GetUser(id);
         }
 
-        public bool IsUniquePhone(string phone)
+        public bool IsUniquePhone(string phone, int id)
         {
-            return !UserRep.GetQueryableItems().Any(c => c.Phone == phone);
+            return !UserRep.GetQueryableItems().Any(c => c.Phone == phone&&c.Id!=id);
 
         }
 
-        public bool IsUniqueEmail(string email)
+        public bool IsUniqueEmail(string email, int id)
         {
-           return !UserRep.GetQueryableItems().Any(c => c.Email == email);
+           return !UserRep.GetQueryableItems().Any(c => c.Email == email && c.Id != id);
 
         }
 
-        public bool IsUniqueName(string Name, string Surname)
+        public bool IsUniqueName(string Name, string Surname, int id)
         {
             var Users = UserRep.GetAll();
             foreach(var a in Users)
             {
-                if (a.Name == Name)
+                if (a.Name == Name && a.Id!=id)
                     if (a.Surname == Surname)
                         return false;
             }

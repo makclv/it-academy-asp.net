@@ -178,7 +178,6 @@
     <Compile Include="Util\AutoFac\AutofacConfig.cs" />
     <Compile Include="Util\Mappers\Mapper.cs" />
     <Compile Include="Validators\CreateUserValidator.cs" />
-    <Compile Include="Validators\UserValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

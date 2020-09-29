@@ -38,13 +38,7 @@ namespace ItAcademy.Hw.Users.Client.Util.AutoFac
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
             builder.RegisterType<MyDbContext>().As<IMyDbContext>().InstancePerLifetimeScope();
 
-            AssemblyScanner.FindValidatorsInAssemblyContaining<UserValidator>()
-                                   .ForEach(result =>
-                                   {
-                                       builder.RegisterType(result.ValidatorType)
-                                       .Keyed<IValidator>(result.InterfaceType)
-                                       .As<IValidator>();
-                                   });
+           
 
             AssemblyScanner.FindValidatorsInAssemblyContaining<CreateUserValidator>()
                                   .ForEach(result =>

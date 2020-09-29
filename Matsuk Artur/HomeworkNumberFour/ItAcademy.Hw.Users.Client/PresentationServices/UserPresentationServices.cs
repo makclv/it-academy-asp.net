@@ -27,8 +27,8 @@ namespace ItAcademy.Hw.Users.Client.PresentationServices
         {
             User user = userDomainService.GetUser(CreateUserView.Id);
             user = Mapper.EditCreateUserViewToUser(CreateUserView, user);
-            user.City = cityDomainService.GetCity(CreateUserView.CityId);
-            user.Country = countryDomainService.GetCountry(CreateUserView.CountryId);
+            user.City = cityDomainService.GetCity(CreateUserView.City.Id);
+            user.Country = countryDomainService.GetCountry(CreateUserView.Country.Id);
 
             userDomainService.ChangeUser();
         }
@@ -36,8 +36,8 @@ namespace ItAcademy.Hw.Users.Client.PresentationServices
         public void AddUser(CreateUserView createUserView)
         {
             User user = Mapper.CreateUserViewToUser(createUserView);
-            user.City = cityDomainService.GetCity(createUserView.CityId);
-            user.Country = countryDomainService.GetCountry(createUserView.CountryId);
+            user.City = cityDomainService.GetCity(createUserView.City.Id);
+            user.Country = countryDomainService.GetCountry(createUserView.Country.Id);
 
             userDomainService.AddUser(user);
 

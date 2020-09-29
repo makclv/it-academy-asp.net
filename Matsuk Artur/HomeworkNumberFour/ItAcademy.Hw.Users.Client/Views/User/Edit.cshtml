@@ -27,14 +27,22 @@
 
     </p>
     <p>
-        Country        @Html.DropDownListFor(model => model.CountryId, Model.SelectListCountries, "Please select",null)
-                        @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
+        Country  
+            
+             @Html.DropDownListFor(model => model.Country.Id, Model.SelectListCountries, "Please select", null)
+
+            @Html.ValidationMessageFor(model => model.Country.Id, "", new { @class = "text-danger" })
+                
     </p>
     <p>
-        City        @Html.DropDownListFor(model => model.CityId, Model.SelectListCities, "Please select",null)
-                     @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
-    </p>
+        City  
+            
+             @Html.DropDownListFor(model => model.City.Id, Model.SelectListCities, "Please select", null)
 
+            @Html.ValidationMessageFor(model => model.City.Id, "", new { @class = "text-danger" })
+        
+    </p>
+            
 
     <p>
         Comments        @Html.TextAreaFor(a => a.Comments)

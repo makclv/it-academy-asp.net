@@ -20,3 +20,4 @@ C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\I
 C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\IAcademy.Hw.Users.Domain\obj\Debug\ItAcademy.Hw.Users.Domain.csproj.CopyComplete
 C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\IAcademy.Hw.Users.Domain\obj\Debug\ItAcademy.Hw.Users.Domain.dll
 C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\IAcademy.Hw.Users.Domain\obj\Debug\ItAcademy.Hw.Users.Domain.pdb
+C:\Users\amats\source\repos\it-academy-asp.net\Matsuk Artur\HomeworkNumberFour\IAcademy.Hw.Users.Domain\obj\Debug\ItAcademy.Hw.Users.Domain.csprojAssemblyReference.cache
