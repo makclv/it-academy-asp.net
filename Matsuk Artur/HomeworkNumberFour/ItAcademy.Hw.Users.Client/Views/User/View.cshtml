@@ -45,7 +45,10 @@
                 <td>@Html.DisplayFor(b => a.City.Name)</td>
                 <td>@a.Phone</td>
                 <td>@a.Email</td>
-                <td>@Html.ActionLink("Edit","Edit",new { id=a.Id },null) @Html.Partial("confirmation", a) @*@Html.ActionLink("Delete","Delete", new { id=a.Id },null)*@</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = a.Id }, null)
+                    @Html.Partial("confirmation", a.Id)   @*@Html.ActionLink("Delete","Delete", new { id=a.Id },null)*@
+                            </td>
             </tr>
 
                     
