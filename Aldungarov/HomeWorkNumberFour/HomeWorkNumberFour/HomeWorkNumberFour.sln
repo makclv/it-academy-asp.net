@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2", "2", "{7FCC2970-18D6-44
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3", "3", "{E810A71E-5A22-4215-B6E7-D43F9B36BE76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWorkNumberFour.DAL", "HomeWorkNumberFour.ClientLayer\HomeWorkNumberFour.DAL.csproj", "{A1E7BACF-2BF5-4F74-BCBE-FA288B926E0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWorkNumberFour.DAL", "HomeWorkNumberFour.DAL\HomeWorkNumberFour.DAL.csproj", "{A1E7BACF-2BF5-4F74-BCBE-FA288B926E0C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWorkNumberFour.BLL", "HomeWorkNumberFour.BLL\HomeWorkNumberFour.BLL.csproj", "{C232D669-3825-42E8-8340-3546D3822EFE}"
 EndProject

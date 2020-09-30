@@ -7,11 +7,9 @@ namespace HomeWorkNumberFour.ClientLayer.DataConfiguration
     {
         public CountryConfiguration()
         {
-            ToTable("Country");
-
-            HasKey(s => s.Id);
-
-            Property(p => p.CountryName);
+            this.HasKey(s => s.Id);
+            this.Property(c => c.CountryName).IsRequired().HasMaxLength(30);
+            this.ToTable("Country");
         }
     }
 }

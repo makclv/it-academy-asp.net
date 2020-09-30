@@ -1,25 +1,17 @@
-﻿using HomeWorkNumberFour.BLL.Interfaces.Repository;
-using HomeWorkNumberFour.BLL.Interfaces.Services;
-using HomeWorkNumberFour.Utils;
+﻿using HomeWorkNumberFour.BLL.Enum;
+using HomeWorkNumberFour.Services.Interfaces;
 using HomeWorkNumberFour.ViewModels;
-using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace HomeWorkNumberFour.Controllers
 {
     public class UsersController : Controller
     {
-        private IUserService _userService;
-        
-        private ICitiesListService _cityListService;
+        private IUsersService _userService;
 
-        private ICountriesListService _countriesListService;
-
-        public UsersController(IUserService userService, ICitiesListService cityListService, ICountriesListService countriesListService)
+        public UsersController(IUsersService userEditService)
         {
-            this._userService = userService;
-            this._cityListService = cityListService;
-            this._countriesListService = countriesListService;
+            this._userService = userEditService;
         }
 
         public ActionResult Index()
@@ -34,33 +26,33 @@ namespace HomeWorkNumberFour.Controllers
 
         public ActionResult UserList()
         {
-            var usersViewModelList = new List<UserViewModel>();
-
-            foreach (var user in _userService.GetUsers())
-            {
-                usersViewModelList.Add(Mapping.ToUserViewModel(user));
-            }
-
-            return View(usersViewModelList);
+            return View(_userService.GetUsersList());
         }
 
         #region Add User
         [HttpGet]
         public ActionResult UserCreate()
         {
-            UserViewModel newUserViewModel = new UserViewModel();
-            
-            newUserViewModel.CitiesList = _cityListService.CityList();
-            
-            newUserViewModel.CountriesList = _countriesListService.CountriesList();
+            //var userViewModel = new UserViewModel
+            //{
+            //    FirstName = "Джерри",
+            //    LastName = "Брукхаймер",
+            //    Title = Title.Dr,
+            //    Phone = "+375-11-111-11-11",
+            //    Email = "Testing1@gmail.com",
+            //    //Address = new Address() { CountryName = "USA", CityName = "Hasselhoff" },
+            //    Comments = "Some comment 1."
+            //};
 
-            return View(newUserViewModel);
+            //_userService.AddUser(userViewModel);
+
+            return View(_userService.GetUserById(0));
         }
 
         [HttpPost]
         public ActionResult UserCreate(UserViewModel userViewModel)
         {
-            _userService.AddUser(Mapping.ToUserModel(userViewModel));
+            _userService.AddUser(userViewModel);
 
             return RedirectToAction("UserList");
         }
@@ -70,19 +62,13 @@ namespace HomeWorkNumberFour.Controllers
         [HttpGet]
         public ActionResult UserEdit(int id)
         {
-            var existUserViewModel = Mapping.ToUserViewModel(_userService.GetUserById(id));
-            
-            existUserViewModel.CitiesList = _cityListService.CityList();
-            
-            existUserViewModel.CountriesList = _countriesListService.CountriesList();
-            
-            return View(existUserViewModel);
+            return View(_userService.GetUserById(id));
         }
 
         [HttpPost]
         public ActionResult UserEdit(UserViewModel userViewModel)
         {
-            _userService.UpdateUser(Mapping.ToUserModel(userViewModel));
+            _userService.UpdateUser(userViewModel);
 
             return RedirectToAction("UserList");
         }
@@ -92,7 +78,7 @@ namespace HomeWorkNumberFour.Controllers
         [HttpGet]
         public ActionResult UserDelete(int id)
         {
-            return View(Mapping.ToUserViewModel(_userService.GetUserById(id)));
+            return View(_userService.GetUserById(id));
         }
 
         [HttpPost]

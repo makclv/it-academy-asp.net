@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enum\Title.cs" />
+    <Compile Include="Interfaces\Repository\Base\IBaseRepository.cs" />
     <Compile Include="Interfaces\Repository\ICitiesListRepository.cs" />
     <Compile Include="Interfaces\Repository\ICountriesListRepository.cs" />
     <Compile Include="Interfaces\Services\ICountriesListService.cs" />

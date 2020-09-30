@@ -7,6 +7,7 @@ namespace HomeWorkNumberFour.ClientLayer.DataConfiguration
     {
         public CityConfiguration()
         {
+            this.HasKey(s => s.Id);
             this.Property(c => c.CityName).IsRequired().HasMaxLength(30);
             this.ToTable("Cities");
         }

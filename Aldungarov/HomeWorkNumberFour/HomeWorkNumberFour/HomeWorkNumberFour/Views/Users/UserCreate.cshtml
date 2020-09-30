@@ -11,11 +11,19 @@
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.FIO)
+                @Html.DisplayNameFor(model => model.FirstName)
             </dt>
 
             <dd>
-                @Html.EditorFor(model => model.FIO)
+                @Html.EditorFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.EditorFor(model => model.LastName)
             </dd>
 
             <dt>
@@ -39,7 +47,7 @@
             </dt>
 
             <dd>
-                @Html.EnumDropDownListFor(model => model.Title)
+                @Html.EnumDropDownListFor(model => model.Title, "Please select")
             </dd>
 
             <dt>

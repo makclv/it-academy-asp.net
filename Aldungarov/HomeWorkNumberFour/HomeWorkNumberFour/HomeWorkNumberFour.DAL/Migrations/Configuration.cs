@@ -1,37 +1,18 @@
-﻿using HomeWorkNumberFour.BLL.Enum;
-using HomeWorkNumberFour.BLL.Models;
-using System.Collections.Generic;
-using System.Data.Entity;
-
-namespace HomeWorkNumberFour.ClientLayer.Context
+﻿namespace HomeWorkNumberFour.ClientLayer.Migrations
 {
-    public class DBContext : DbContext, IDBContext
+    using HomeWorkNumberFour.BLL.Enum;
+    using HomeWorkNumberFour.BLL.Models;
+    using System.Collections.Generic;
+    using System.Data.Entity.Migrations;
+    
+    internal sealed class Configuration : DbMigrationsConfiguration<HomeWorkNumberFour.ClientLayer.Context.DBContext>
     {
-        public DBContext() : base("DBConnection")
+        public Configuration()
         {
-            //Database.SetInitializer(new CreateDatabaseIfNotExists<DBContext>());
-            Database.SetInitializer(new SampleInitializer());
+            AutomaticMigrationsEnabled = false;
         }
 
-        public DbSet<User> Users { get; set; }
-
-        public DbSet<Country> Countries { get; set; }
-
-        public DbSet<City> Cities { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Configurations.AddFromAssembly(GetType().Assembly);
-        }
-    }
-
-    public class SampleInitializer
-        : CreateDatabaseIfNotExists<DBContext>
-    {
-        // В этом методе можно заполнить таблицу по умолчанию
-        protected override void Seed(DBContext context)
+        protected override void Seed(HomeWorkNumberFour.ClientLayer.Context.DBContext context)
         {
             List<City> cities = new List<City>
             {
@@ -116,9 +97,7 @@ namespace HomeWorkNumberFour.ClientLayer.Context
             foreach (User user in users)
                 context.Users.Add(user);
 
-
             context.SaveChanges();
-            base.Seed(context);
         }
     }
 }

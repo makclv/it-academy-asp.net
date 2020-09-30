@@ -6,7 +6,9 @@ using HomeWorkNumberFour.BLL.Services;
 using HomeWorkNumberFour.BLL.UnitOfWork;
 using HomeWorkNumberFour.ClientLayer.Context;
 using HomeWorkNumberFour.ClientLayer.Repository;
-using HomeWorkNumberFour.ClientLayer.UnitOfWork;
+using HomeWorkNumberFour.DAL.UnitOfWork;
+using HomeWorkNumberFour.Services;
+using HomeWorkNumberFour.Services.Interfaces;
 using System.Web.Mvc;
 
 namespace HomeWorkNumberFour.Utils
@@ -19,6 +21,7 @@ namespace HomeWorkNumberFour.Utils
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
+            builder.RegisterType<UsersService>().As<IUsersService>();
             builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<CitiesListService>().As<ICitiesListService>();
             builder.RegisterType<CountriesListService>().As<ICountriesListService>();
@@ -26,8 +29,8 @@ namespace HomeWorkNumberFour.Utils
             builder.RegisterType<CitiesListRepository>().As<ICitiesListRepository>();
             builder.RegisterType<CountriesListRepository>().As<ICountriesListRepository>();
 
-            builder.RegisterType<DBContext>().As<IDBContext>();
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
+            builder.RegisterType<DBContext>().As<IDBContext>().InstancePerLifetimeScope();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
 
             var container = builder.Build();
 

@@ -2,11 +2,11 @@
 using HomeWorkNumberFour.ClientLayer.Context;
 using System.Data.Entity;
 
-namespace HomeWorkNumberFour.ClientLayer.UnitOfWork
+namespace HomeWorkNumberFour.DAL.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private IDBContext db;
+        private readonly IDBContext db;
 
         public UnitOfWork(IDBContext db)
         {

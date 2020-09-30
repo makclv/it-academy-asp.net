@@ -9,9 +9,11 @@ namespace HomeWorkNumberFour.ViewModels
     {
         public int Id { get; set; }
 
-        public string FIO { get; set; }
+        public string FirstName { get; set; }
 
-        public Title Title { get; set; }
+        public string LastName { get; set; }
+
+        public Title Title2 { get; set; }
 
         public string CountryName { get; set; }
 
