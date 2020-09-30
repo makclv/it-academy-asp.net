@@ -10,6 +10,7 @@ using Domain.UnitOfWork;
 using FluentValidation;
 using FluentValidation.Mvc;
 using ItAcademy.HomeWorkNumFour.App_Start;
+using ItAcademy.HomeWorkNumFour.Service.Interface;
 using ItAcademy.HomeWorkNumFour.Validation;
 using System.Linq;
 using System.Web.Mvc;
@@ -32,6 +33,7 @@ namespace ItAcademy.HomeWorkNumFour.Util
             builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerDependency();
             builder.RegisterType<CountryRepository>().As<ICountryRepository>().InstancePerDependency();
             builder.RegisterType<CityRepository>().As<ICityRepository>().InstancePerDependency();
+            builder.RegisterType<UserPresentationService>().As<IUserPresentationService>().InstancePerDependency();
 
             builder.RegisterAssemblyTypes(typeof(BaseRepository<>).Assembly)
                 .AsClosedTypesOf(typeof(IBaseRepository<>))

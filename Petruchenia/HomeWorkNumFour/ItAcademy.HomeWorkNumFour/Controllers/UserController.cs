@@ -4,6 +4,7 @@ using Domain.Entites;
 using Domain.UnitOfWork;
 using ItAcademy.HomeWorkNumFour.Models.CRUD;
 using ItAcademy.HomeWorkNumFour.Models.EntityFramework;
+using ItAcademy.HomeWorkNumFour.Service.Interface;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -11,22 +12,11 @@ namespace ItAcademy.HomeWorkNumFour.Controllers
 {
     public class UserController : Controller
     {
-        private readonly ICountryDomainService countryDomainService;
-        private readonly ICityDomainService cityDomainService;
-        private readonly IUserDomainService userDomainService;
-        private readonly IUnitOfWork unitOfWork;
-
-        public UserController(
-            ICountryDomainService countryDomainService,
-            ICityDomainService cityDomainService,
-            IUserDomainService userDomainService,
-            IUnitOfWork unitOfWork
-            )
-        {
-            this.countryDomainService = countryDomainService;
-            this.cityDomainService = cityDomainService;
-            this.userDomainService = userDomainService;
-            this.unitOfWork = unitOfWork;
+        private readonly IUserPresentationService userPresentationService;
+        
+        public UserController(IUserPresentationService userPresentationService)
+        {            
+            this.userPresentationService = userPresentationService;
         }
 
         public UserController()
@@ -43,75 +33,48 @@ namespace ItAcademy.HomeWorkNumFour.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            CreateUser createUser = new CreateUser();
-            createUser.CountriesDDL = countryDomainService.GetAllCountries();
-            createUser.CitiesDDL = cityDomainService.GetAllCities();
-            return View(createUser);
+            return View(userPresentationService.AddToView());
         }
 
         [HttpPost]
         public ActionResult Create(CreateUser createUser)
         {
-            
-                User user = Mapper.Map<CreateUser, User>(createUser);
+                userPresentationService.AddToDb(createUser);
 
-                user.City = cityDomainService.GetCityById(user.City.CityId);
-                user.Country = countryDomainService.GetCountryById(user.Country.CountryId);
-
-                userDomainService.Create(user);
                 return RedirectToAction("GetAllUsers");            
-            
         }
 
         [HttpGet]
-        public ActionResult Edit (int Id)
-        {
-            EditUser editUser = Mapper.Map<User, EditUser>
-                (userDomainService.GetById(Id));
+        public ActionResult Edit (int id)
+        {            
 
-            editUser.CountriesDDL = countryDomainService.GetAllCountries();
-            editUser.CitiesDDL = cityDomainService.GetAllCities();
-
-            return View(editUser);
+            return View(userPresentationService.EditToView(id));
         }
 
         [HttpPost]
-        public ActionResult Edit(EditUser editeUser )
+        public ActionResult Edit(EditUser editUser )
         {
-                User user = Mapper.Map<EditUser, User>(editeUser);
-
-                user.City = cityDomainService.GetCityById(user.City.CityId);
-                user.Country = countryDomainService.GetCountryById(user.Country.CountryId);
-
-                userDomainService.EditUser(user);
-                return RedirectToAction("GetAllUsers");
-            
+                userPresentationService.EditToDb(editUser);
+                return RedirectToAction("GetAllUsers");            
         }
 
         [HttpGet]
         public ActionResult GetAllUsers ()
         {
-            List<User> AllUsers = userDomainService.GetAll();
-            List<UserViewModel> userViewModels = new List<UserViewModel>();
-            foreach (var item in AllUsers)
-            {
-                userViewModels.Add(Mapper.Map<User, UserViewModel>(item));
-            }
+            List<UserViewModel> userViewModels = userPresentationService.GetUsersViewList();
             return View(userViewModels);
         }
 
         [HttpGet]
         public ActionResult Delete (int id)
         {
-            DeleteUser deleteUser = Mapper.Map<User, DeleteUser>
-                (userDomainService.GetById(id));
-            return View(deleteUser);
+            return View(userPresentationService.GetUserByIdToDelete(id));
         }
 
         [HttpPost]
         public ActionResult Delete(DeleteUser deleteUser)
         {
-            userDomainService.DeleteUser(deleteUser.UserId);
+            userPresentationService.DeleteUserById(deleteUser.UserId);
             return RedirectToAction("GetAllUsers");
         }
     }
