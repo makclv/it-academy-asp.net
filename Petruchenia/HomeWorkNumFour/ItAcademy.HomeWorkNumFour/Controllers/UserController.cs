@@ -39,9 +39,15 @@ namespace ItAcademy.HomeWorkNumFour.Controllers
         [HttpPost]
         public ActionResult Create(CreateUser createUser)
         {
-                userPresentationService.AddToDb(createUser);
+            if (!ModelState.IsValid)
+            {
+                createUser = userPresentationService.AddToView();
+                return View("Create", createUser);
+            }
 
-                return RedirectToAction("GetAllUsers");            
+            userPresentationService.AddToDb(createUser);
+
+            return RedirectToAction("GetAllUsers");               
         }
 
         [HttpGet]
@@ -54,6 +60,11 @@ namespace ItAcademy.HomeWorkNumFour.Controllers
         [HttpPost]
         public ActionResult Edit(EditUser editUser )
         {
+            if (!ModelState.IsValid)
+            {
+                editUser = userPresentationService.EditToView(editUser.UserId);
+                return View("Edit", editUser);
+            }
                 userPresentationService.EditToDb(editUser);
                 return RedirectToAction("GetAllUsers");            
         }

@@ -14,11 +14,11 @@ namespace ItAcademy.HomeWorkNumFour.Validation
             this.userDomainService = userDomainService;
 
             RuleFor(x => x.FirstName)
-                .NotEmpty().WithMessage("Please specify a Name.")
+                .NotEmpty().WithMessage("Please specify a First name.")
                 .MaximumLength(15).WithMessage("You First Name can't be much then 15 simbols");
 
             RuleFor(x => x.LastName)
-                .NotEmpty().WithMessage("Please specify a Name.")
+                .NotEmpty().WithMessage("Please specify a Last name.")
                 .MaximumLength(15).WithMessage("You Last Name can't be much then 15 simbols");
             
             RuleFor(x => x.Comment).
@@ -27,22 +27,27 @@ namespace ItAcademy.HomeWorkNumFour.Validation
             RuleFor(x => x.Title).
                 NotNull().WithMessage("Please fill in the field.");
 
+            RuleFor(x => x.CountryId).
+               NotNull().WithMessage("Please fill in the field.");
+            RuleFor(x => x.CityId).
+               NotNull().WithMessage("Please fill in the field.");
+
             RuleFor(x => x.Phone)
                 .NotEmpty().WithMessage("Please specify a phone.")
                 .MaximumLength(11).WithMessage("You Phone can't be much then 11 simbols")
                 .Must(IsUniquePhone).WithMessage("This number already exists");
 
             RuleFor(x => x.Email)
-                .NotEmpty().WithMessage("Please specify a phone.")
+                .NotEmpty().WithMessage("Please specify a email.")
                 .MaximumLength(30).WithMessage("You Email can't be much then 30 simbols")
                 .Must(IsUniqueEmail).WithMessage("This email already exists");
 
 
-            //RuleFor(x => x)
-            //    .Must(IsUniqueName).WithMessage("This Name already exist.");
+            RuleFor(x => x)
+                .Must(IsUniqueName).WithMessage("This Name already exist.");
 
-            ////RuleFor(x => x)
-            //    .Must(IsCityBelongsToCountry).WithMessage("This city are not belogn to selected country");
+            RuleFor(x => x)
+                .Must(IsCityBelongsToCountry).WithMessage("This city are not belogn to selected country");
 
 
         }
@@ -64,7 +69,7 @@ namespace ItAcademy.HomeWorkNumFour.Validation
 
         private bool IsCityBelongsToCountry(CreateUser createUser)
         {
-            return countryDomainService.AreCityBelongToCountry(createUser.Country.CountryId, createUser.City.CityId);
+            return countryDomainService.AreCityBelongToCountry(createUser.CountryId, createUser.CityId);
         }
     }
 }

@@ -45,8 +45,8 @@ namespace ItAcademy.HomeWorkNumFour.Service.Interface
         {
             User user = Mapper.Map<CreateUser, User>(createUser);
 
-            user.City = cityDomainService.GetCityById(user.City.CityId);
-            user.Country = countryDomainService.GetCountryById(user.Country.CountryId);
+            user.City = cityDomainService.GetCityById(createUser.CityId);
+            user.Country = countryDomainService.GetCountryById(createUser.CountryId);
 
             userDomainService.Create(user);
         }
@@ -65,8 +65,8 @@ namespace ItAcademy.HomeWorkNumFour.Service.Interface
         {
             User user = Mapper.Map<EditUser, User>(editUser);
 
-            user.City = cityDomainService.GetCityById(user.City.CityId);
-            user.Country = countryDomainService.GetCountryById(user.Country.CountryId);
+            user.City = cityDomainService.GetCityById(editUser.CityId);
+            user.Country = countryDomainService.GetCountryById(editUser.CountryId);
 
             userDomainService.EditUser(user);
         }

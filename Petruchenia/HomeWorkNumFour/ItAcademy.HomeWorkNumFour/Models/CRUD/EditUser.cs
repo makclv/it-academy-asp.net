@@ -13,7 +13,9 @@ namespace ItAcademy.HomeWorkNumFour.Models.EntityFramework
         public string Email { get; set; }
         public Title Title { get; set; }
         public ViewCountry Country { get; set; }
+        public int CountryId { get; set; }
         public ViewCity City { get; set; }
+        public int CityId { get; set; }
         public string Comment { get; set; }
 
         public IEnumerable<SelectListItem> CountriesDDL { get; set; }

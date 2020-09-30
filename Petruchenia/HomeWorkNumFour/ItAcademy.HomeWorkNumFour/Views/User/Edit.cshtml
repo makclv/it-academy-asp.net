@@ -43,17 +43,17 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Country.CountryId, "Country:", new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.CountryId, "Country:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Country.CountryId, Model.CountriesDDL, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Country.CountryId, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(model => model.CountryId, Model.CountriesDDL, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CountryId, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.City.CityId, "City:", new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.CityId, "City:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.City.CityId, Model.CitiesDDL, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.City.CityId, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(model => model.CityId, Model.CitiesDDL, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CityId, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">

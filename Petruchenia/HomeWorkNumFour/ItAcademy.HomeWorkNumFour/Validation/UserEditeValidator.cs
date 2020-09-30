@@ -6,12 +6,10 @@ namespace ItAcademy.HomeWorkNumFour.Validation
 {
     public class UserEditeValidator : AbstractValidator<EditUser>
     {
-        private readonly IUserDomainService userDomainService;
         private readonly ICountryDomainService countryDomainService;
-        public UserEditeValidator(IUserDomainService userDomainService, ICountryDomainService countryDomainService)
+        public UserEditeValidator(ICountryDomainService countryDomainService)
         {
             this.countryDomainService = countryDomainService;
-            this.userDomainService = userDomainService;
 
             RuleFor(x => x.FirstName)
                 .NotEmpty().WithMessage("Please specify a Name.")
@@ -29,40 +27,25 @@ namespace ItAcademy.HomeWorkNumFour.Validation
 
             RuleFor(x => x.Phone)
                 .NotEmpty().WithMessage("Please specify a phone.")
-                .MaximumLength(11).WithMessage("You Phone can't be much then 11 simbols")
-                .Must(IsUniquePhone).WithMessage("This number already exists");
+                .MaximumLength(11).WithMessage("You Phone can't be much then 11 simbols");
 
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("Please specify a phone.")
-                .MaximumLength(30).WithMessage("You Email can't be much then 30 simbols")
-                .Must(IsUniqueEmail).WithMessage("This email already exists");
+                .MaximumLength(30).WithMessage("You Email can't be much then 30 simbols");
 
-            //RuleFor(x => x)
-            //    .Must(IsUniqueName).WithMessage("This Name already exist.");
+            RuleFor(x => x.CountryId).
+               NotNull().WithMessage("Please fill in the field.");
+            RuleFor(x => x.CityId).
+               NotNull().WithMessage("Please fill in the field.");
 
-            //RuleFor(x => x)
-            //    .Must(IsCityBelongsToCountry).WithMessage("This city are not belogn to selected country");
+            RuleFor(x => x)
+                .Must(IsCityBelongsToCountry).WithMessage("This city are not belogn to selected country");
 
-        }
-
-        private bool IsUniqueName(EditUser editUser)
-        {
-            return userDomainService.IsUniqueName(editUser.FirstName, editUser.LastName);
-        }
-
-        private bool IsUniqueEmail(string email)
-        {
-            return userDomainService.IsUniqueEmail(email);
-        }
-
-        private bool IsUniquePhone(string phone)
-        {
-            return userDomainService.IsUniquePhone(phone);
         }
 
         private bool IsCityBelongsToCountry(EditUser editUser)
         {
-            return countryDomainService.AreCityBelongToCountry(editUser.Country.CountryId, editUser.City.CityId);
+            return countryDomainService.AreCityBelongToCountry(editUser.CountryId, editUser.CityId);
         }
     }
 }

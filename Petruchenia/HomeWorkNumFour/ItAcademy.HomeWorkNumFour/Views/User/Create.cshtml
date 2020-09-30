@@ -41,17 +41,23 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Country.CountryId, "Country:", new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.CountryId, "Country:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Country.CountryId, Model.CountriesDDL, "Please select", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Country.CountryId, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(model => model.CountryId, Model.CountriesDDL as SelectList, "Please select", new { @class = "form-control" })
+            <div class="text-danger">
+                @Html.ValidationMessageFor(model => model.CountryId)
+            </div>
+
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.City.CityId, "City:", new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.CityId, "City:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.City.CityId, Model.CitiesDDL, "Please select", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.City.CityId, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(model => model.CityId, Model.CitiesDDL as SelectList, "Please select", new { @class = "form-control" })
+            <div class="text-danger">
+                @Html.ValidationMessageFor(model => model.CityId)
+            </div>
+            
         </div>
     </div>
     <div class="form-group">
