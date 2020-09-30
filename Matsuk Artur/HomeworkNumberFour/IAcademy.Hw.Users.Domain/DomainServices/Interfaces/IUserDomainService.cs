@@ -14,7 +14,6 @@ namespace ItAcademy.Hw.Users.Domain.DomainServices.Interfaces
         bool IsUniquePhone(string phone, int id);
         bool IsUniqueEmail(string email,int id);
         bool IsUniqueName(string Name, string Surname, int id);
-        bool IsCityBelongsToCountry(int countryId, int cityId);
         User GetUser(int id);
     }
 }

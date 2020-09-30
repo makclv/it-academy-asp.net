@@ -16,5 +16,10 @@ namespace ItAcademy.Hw.Users.Data.Repositories
         {
             this.unitOfWork = unitOfWork;
         }
+
+        public List<City> GetCitiesByCountry(int id)
+        {
+            return GetQueryableItems().Where(a => a.Country.Id == id).ToList();
+        }
     }
 }

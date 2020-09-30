@@ -2,6 +2,7 @@
 using ItAcademy.Hw.Users.Client.Models;
 using ItAcademy.Hw.Users.Client.Util.Mappers;
 using ItAcademy.Hw.Users.Domain.DomainServices.Interfaces;
+using ItAcademy.Hw.Users.Domain.Models;
 using System;
 
 namespace ItAcademy.Hw.Users.Client.Validators
@@ -23,11 +24,11 @@ namespace ItAcademy.Hw.Users.Client.Validators
                 .MaximumLength(15).WithMessage("Surname can have a max of 15 characters.");
 
             RuleFor(x => x)
-                
+
                 .Must(IsUniquePhone).WithMessage("This number already exists")
             .Must(IsUniqueEmail).WithMessage("This email already exists")
-             .Must(IsUniqueName).WithMessage("Full name already exist. Please enter other Name or Surname.")
-              .Must(IsCityBelongsToCountry).WithMessage("This city does not belong to the selected country.");
+             .Must(IsUniqueName).WithMessage("Full name already exist. Please enter other Name or Surname.");
+             
 
             RuleFor(x => x.Phone)
                 .NotEmpty().WithMessage("Please specify a phone.")
@@ -42,7 +43,8 @@ namespace ItAcademy.Hw.Users.Client.Validators
                 
 
             RuleFor(x => x.Title)
-                .NotNull().WithMessage("Please fill in the field.");
+                .NotNull().WithMessage("Please fill in the field.")
+                .Must(NotZero).WithMessage("Select this");
 
             RuleFor(x => x.Comments)
                 .MaximumLength(500).WithMessage("Comments can have a max of 500 characters.");
@@ -50,10 +52,7 @@ namespace ItAcademy.Hw.Users.Client.Validators
            
         }
 
-        private bool IsCityBelongsToCountry(CreateUserView userView)
-        {
-            return userDomainService.IsCityBelongsToCountry(userView.Country.Id, userView.City.Id);
-        }
+       
 
         private bool IsUniqueName(CreateUserView userView)
         {
@@ -68,6 +67,11 @@ namespace ItAcademy.Hw.Users.Client.Validators
         private bool IsUniquePhone(CreateUserView userView)
         {
             return userDomainService.IsUniquePhone(userView.Phone, userView.Id);
+        }
+
+        private bool NotZero(Title title)
+        {
+            return title != 0;
         }
     }
 }

@@ -16,7 +16,6 @@ namespace ItAcademy.Hw.Users.Client.Controllers
        private readonly IUserPresentationServices userPresentationServices;
         private readonly ICityDomainService cityDomainService;
         private readonly ICountryDomainService countryDomainService;
-        // GET: User
         public UserController(IUserDomainService userDomainService, IUserPresentationServices userPresentationServices, ICityDomainService cityDomainService, ICountryDomainService countryDomainService)
         {
             this.userDomainService = userDomainService;
@@ -88,6 +87,11 @@ namespace ItAcademy.Hw.Users.Client.Controllers
             }
             return View("Edit", userPresentationServices.CreateEmptyUser());
 
+        }
+        [HttpGet]
+        public JsonResult GetCitiesByCountry(int id)
+        {
+            return Json(cityDomainService.GetCitiesByCountry(id), JsonRequestBehavior.AllowGet);
         }
     }
 }

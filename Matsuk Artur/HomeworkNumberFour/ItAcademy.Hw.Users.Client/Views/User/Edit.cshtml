@@ -29,7 +29,7 @@
     <p>
         Country  
             
-             @Html.DropDownListFor(model => model.Country.Id, Model.SelectListCountries, "Please select", null)
+             @Html.DropDownListFor(model => model.Country.Id, Model.SelectListCountries, "Please select", new {id="country" })
 
             @Html.ValidationMessageFor(model => model.Country.Id, "", new { @class = "text-danger" })
                 
@@ -37,7 +37,7 @@
     <p>
         City  
             
-             @Html.DropDownListFor(model => model.City.Id, Model.SelectListCities, "Please select", null)
+             @Html.DropDownListFor(model => model.City.Id, Model.SelectListCities, "Select Country",new { id = "city" })
 
             @Html.ValidationMessageFor(model => model.City.Id, "", new { @class = "text-danger" })
         
@@ -57,4 +57,42 @@
 }
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript">
+    $(function () {
+        let countryVal = $("#country").val();
+        if (countryVal == "") {
+            $("#city option:gt(0)").remove();
+            $('#city').prop('disabled', true);
+
+        }
+        $("#country").on("change", function () {
+             countryVal = $("#country").val();
+
+            if (countryVal == "") {
+                $("#city option:gt(0)").remove();
+                $('#city').prop('disabled', true);
+
+            }
+            else {
+                $.ajax({
+                    method: "GET",
+                    url: "/User/GetCitiesByCountry",
+                    data: { id: countryVal }
+                })
+                    .done(function (getCities) {
+                        $("#city option:gt(0)").remove();
+                        for (var i = 0; i < getCities.length; i++) {
+                            $('#city').append('<option value=' + getCities[i].Id + '>' + getCities[i].Name + '</option>');
+                        }
+                        $('#city').prop('disabled', false);
+                    });
+            }
+
+        });
+
+
+    });
+        
+
+</script>
 }

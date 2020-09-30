@@ -11,5 +11,6 @@ namespace ItAcademy.Hw.Users.Domain.DomainServices.Interfaces
     {
         List<City> GetCities();
         City GetCity(int id);
+        List<City> GetCitiesByCountry(int id);
     }
 }

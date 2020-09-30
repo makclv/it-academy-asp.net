@@ -11,7 +11,7 @@ namespace ItAcademy.Hw.Users.Domain.DomainServices.Interfaces
     {
         List<Country> GetCountries();
         Country GetCountry(int id);
-        bool IsCityBelongsToCountry(int countryId, int cityId);
+       
         Country GetCountryWithCities(int id);
     }
 }

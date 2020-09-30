@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ItAcademy.Hw.Users.Domain.DomainServices
 {
-   public class CityDomainService : ICityDomainService
+    public class CityDomainService : ICityDomainService
     {
         private readonly ICityRepository cityRepository;
 
@@ -25,6 +25,11 @@ namespace ItAcademy.Hw.Users.Domain.DomainServices
         public City GetCity(int id)
         {
             return cityRepository.Get(id);
+        }
+
+        public List<City> GetCitiesByCountry(int id)
+        {
+            return cityRepository.GetCitiesByCountry(id);
         }
     }
 }

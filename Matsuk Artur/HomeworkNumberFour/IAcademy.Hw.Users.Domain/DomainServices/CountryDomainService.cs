@@ -34,13 +34,6 @@ namespace ItAcademy.Hw.Users.Domain.DomainServices
 
         }
 
-        public bool IsCityBelongsToCountry(int countryId, int cityId)
-        {
-            return countryRepository
-                .GetCountryWithCities(countryId)
-                .Cities
-                .Any(c => c.Id == cityId);
-
-        }
+       
     }
 }

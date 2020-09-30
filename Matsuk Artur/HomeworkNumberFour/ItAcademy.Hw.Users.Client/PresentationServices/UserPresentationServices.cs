@@ -47,7 +47,7 @@ namespace ItAcademy.Hw.Users.Client.PresentationServices
         {
             CreateUserView CreateUserView = new CreateUserView
             {
-                SelectListCities = new SelectList(cityDomainService.GetCities(), "Id", "Name"),
+                SelectListCities = new SelectList(cityDomainService.GetCities(),"Id","Name"),
                 SelectListCountries = new SelectList(countryDomainService.GetCountries(), "Id", "Name")
             };
 
