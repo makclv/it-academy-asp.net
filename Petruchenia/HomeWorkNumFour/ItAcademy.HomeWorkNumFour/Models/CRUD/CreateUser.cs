@@ -6,7 +6,6 @@ using System.Web.Mvc;
 
 namespace ItAcademy.HomeWorkNumFour.Models.EntityFramework
 {
-    [Validator(typeof(UserValidation))]
     public class CreateUser
     {
         public string FirstName { get; set; }

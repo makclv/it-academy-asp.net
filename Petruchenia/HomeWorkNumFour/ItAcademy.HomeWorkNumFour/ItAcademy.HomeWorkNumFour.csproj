@@ -166,9 +166,9 @@
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Util\AutofacValidatorFactory.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -189,7 +189,8 @@
     <Compile Include="Service\CityPresentationService.cs" />
     <Compile Include="Service\UserPresentationService.cs" />
     <Compile Include="Util\AutofacConfig.cs" />
-    <Compile Include="Validation\UserValidation.cs" />
+    <Compile Include="Validation\UserEditeValidator.cs" />
+    <Compile Include="Validation\UserCreateValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

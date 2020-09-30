@@ -7,6 +7,8 @@ namespace ClassLibrary1.Services.Interfaces
     public interface ICountryDomainService : IBaseDomainService
     {
         SelectList GetAllCountries();
+        Country GetCountryById(int id);
+
         bool AreCityBelongToCountry(int countryId, int cityId);
     }
 }

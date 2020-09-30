@@ -9,48 +9,56 @@
         @Html.LabelFor(m => m.FirstName, "First name:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.FirstName, "First name", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.LastName, "Last name:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.LastName, "Last name", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Phone, "Phone:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Phone, "+375(00)...", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Email, "Email:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Email, "example@gmail.com", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Title, "Title:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.EnumDropDownListFor(model => model.Title, "Please select", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Country.CountryId, "Country:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Country.CountryId, Model.CountriesDDL, "Please select", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Country.CountryId, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.City.CityId, "City:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.City.CityId, Model.CitiesDDL, "Please select", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.City.CityId, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Comment, "Comment:", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Comment, "Opinion/Comment", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -62,6 +70,9 @@
 }
 <a href="@Url.Action("GetAllUsers")" class="green">Cancel</a>
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 <style>
     a.green {
         border-radius: 4px;
@@ -92,4 +103,4 @@
         a.green:hover {
             background-color: rgb( 75, 183, 141 );
         }
-    </style>
+</style>

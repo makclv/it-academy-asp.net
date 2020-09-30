@@ -16,7 +16,6 @@ namespace ItAcademy.HomeWorkNumFour
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
             AutofacConfig.ConfigureContainer();
 
             Mapper.Initialize(cfg =>

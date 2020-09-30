@@ -23,6 +23,12 @@ namespace ClassLibrary1.Services
             return listItems;
         }
 
+
+        public Country GetCountryById(int id)
+        {
+            return countryRepository.GetCountryById(id);
+        }
+
         public bool AreCityBelongToCountry(int countryId, int cityId)
         {
             return countryRepository

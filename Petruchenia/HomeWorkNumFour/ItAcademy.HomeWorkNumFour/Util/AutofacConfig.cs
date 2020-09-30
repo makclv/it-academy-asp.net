@@ -7,10 +7,11 @@ using Data.Repositories;
 using Data.UnitOfWork;
 using Domain.Repository;
 using Domain.UnitOfWork;
-using System;
-using System.Collections.Generic;
+using FluentValidation;
+using FluentValidation.Mvc;
+using ItAcademy.HomeWorkNumFour.App_Start;
+using ItAcademy.HomeWorkNumFour.Validation;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ItAcademy.HomeWorkNumFour.Util
@@ -23,9 +24,14 @@ namespace ItAcademy.HomeWorkNumFour.Util
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
-
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
-            builder.RegisterType<CoreDbContext>().As<ICoreDbContext>().InstancePerRequest();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
+            builder.RegisterType<CoreDbContext>().As<ICoreDbContext>().InstancePerLifetimeScope();
+            builder.RegisterType<UserDomainService>().As<IUserDomainService>().InstancePerDependency();
+            builder.RegisterType<CountryDomainService>().As<ICountryDomainService>().InstancePerDependency();
+            builder.RegisterType<CityDomainService>().As<ICityDomainService>().InstancePerDependency();
+            builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerDependency();
+            builder.RegisterType<CountryRepository>().As<ICountryRepository>().InstancePerDependency();
+            builder.RegisterType<CityRepository>().As<ICityRepository>().InstancePerDependency();
 
             builder.RegisterAssemblyTypes(typeof(BaseRepository<>).Assembly)
                 .AsClosedTypesOf(typeof(IBaseRepository<>))
@@ -38,9 +44,30 @@ namespace ItAcademy.HomeWorkNumFour.Util
                .AsImplementedInterfaces()
                .InstancePerDependency();
 
+            AssemblyScanner.FindValidatorsInAssemblyContaining<UserCreateValidation>()
+                                  .ForEach(result =>
+                                  {
+                                      builder.RegisterType(result.ValidatorType)
+                                      .Keyed<IValidator>(result.InterfaceType)
+                                      .As<IValidator>();
+                                  });
+
+            AssemblyScanner.FindValidatorsInAssemblyContaining<UserEditeValidator>()
+                                  .ForEach(result =>
+                                  {
+                                      builder.RegisterType(result.ValidatorType)
+                                      .Keyed<IValidator>(result.InterfaceType)
+                                      .As<IValidator>();
+                                  });
+
             var container = builder.Build();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            FluentValidationModelValidatorProvider.Configure(config =>
+            {
+                config.ValidatorFactory = new AutofacValidatorFactory(container);
+            });
         }
     }
 }

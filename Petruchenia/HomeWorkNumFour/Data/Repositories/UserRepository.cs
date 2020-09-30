@@ -9,9 +9,10 @@ namespace Data.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
+        private readonly IUnitOfWork unitOfWork;
         public UserRepository (IUnitOfWork unitOfWork) : base (unitOfWork)
         {
-
+            this.unitOfWork = unitOfWork;
         }
 
         public void EditUser(User user)

@@ -52,13 +52,15 @@ namespace ItAcademy.HomeWorkNumFour.Controllers
         [HttpPost]
         public ActionResult Create(CreateUser createUser)
         {
-            User user = Mapper.Map<CreateUser, User>(createUser);
+            
+                User user = Mapper.Map<CreateUser, User>(createUser);
 
-            user.City = cityDomainService.GetCityById(user.City.CityId);
-            user.Country = countryDomainService.GetCountryById(user.Country.CountryId);
+                user.City = cityDomainService.GetCityById(user.City.CityId);
+                user.Country = countryDomainService.GetCountryById(user.Country.CountryId);
 
-            userDomainService.Create(user);
-            return RedirectToAction("GetAllUsers");
+                userDomainService.Create(user);
+                return RedirectToAction("GetAllUsers");            
+            
         }
 
         [HttpGet]
@@ -76,13 +78,14 @@ namespace ItAcademy.HomeWorkNumFour.Controllers
         [HttpPost]
         public ActionResult Edit(EditUser editeUser )
         {
-            User user = Mapper.Map<EditUser, User>(editeUser);
+                User user = Mapper.Map<EditUser, User>(editeUser);
 
-            user.City = cityDomainService.GetCityById(user.City.CityId);
-            user.Country = countryDomainService.GetCountryById(user.Country.CountryId);
+                user.City = cityDomainService.GetCityById(user.City.CityId);
+                user.Country = countryDomainService.GetCountryById(user.Country.CountryId);
 
-            userDomainService.EditUser(user);
-            return RedirectToAction("GetAllUsers");
+                userDomainService.EditUser(user);
+                return RedirectToAction("GetAllUsers");
+            
         }
 
         [HttpGet]

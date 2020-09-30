@@ -18,6 +18,7 @@ namespace ItAcademy.HomeWorkNumFour.App_Start
             cfg.CreateMap<ViewCountry, Country>();
             cfg.CreateMap<ViewCity, City>();
             cfg.CreateMap<CreateUser, User>();
+            cfg.CreateMap<User, CreateUser>();
             cfg.CreateMap<EditUser, User>();
             cfg.CreateMap<User, EditUser>();
 
