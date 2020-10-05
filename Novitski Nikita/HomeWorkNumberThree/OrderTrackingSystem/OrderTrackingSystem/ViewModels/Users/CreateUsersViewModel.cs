@@ -1,16 +1,13 @@
 ﻿using OrderTrackingSystem.Domain.Models;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
-namespace OrderTrackingSystem.ViewModels.Users  
+namespace OrderTrackingSystem.ViewModels.Users
 {
+    //[Validator(typeof(CreateUsersVmValidator))]
     public class CreateUsersViewModel
     {
-        public string FirsName { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
 
         [DataType(DataType.PhoneNumber)]
@@ -22,10 +19,14 @@ namespace OrderTrackingSystem.ViewModels.Users
         [UIHint("MultilineText")]
         public string Comments { get; set; }
 
-        public Title Title { get; set; }
+        public Title UserTitle { get; set; }
 
-         public Guid CityId { get; set; }
-         public Guid CountryId { get; set; }
+        public int CityId { get; set; }
+        public int CountryId { get; set; }
+
+
+        public SelectList SelectListCitys { get; set; }
+        public SelectList SelectListCountries { get; set; }
 
     }
 }

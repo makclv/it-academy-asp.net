@@ -1,15 +1,11 @@
 ﻿using OrderTrackingSystem.Domain.Models;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace OrderTrackingSystem.ViewModels.Users
 {
     public class DeleteUsersViewModel
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
         [DataType(DataType.PhoneNumber)]
@@ -21,7 +17,7 @@ namespace OrderTrackingSystem.ViewModels.Users
         [UIHint("MultilineText")]
         public string Comments { get; set; }
 
-        public Title Title { get; set; }
+        public Title UserTitle { get; set; }
 
         public City City { get; set; }
         public Country Country { get; set; }

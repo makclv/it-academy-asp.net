@@ -15,7 +15,7 @@ namespace OrderTrackingSystem
 
             routes.MapRoute(
                 name: "Default",
-                url: "mvc-test-task/{controller}/{action}/{id}",
+                url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Users", action = "Index", id = UrlParameter.Optional }
             );
         }

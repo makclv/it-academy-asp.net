@@ -1,27 +1,20 @@
 ﻿using OrderTrackingSystem.Domain.Models;
-using System;
+using OrderTrackingSystem.Domain.OtherModels;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OrderTrackingSystem.Domain.Repositories
 {
-    public interface IUserRepository
+    public interface IUserRepository : IBaseRepository<User>
     {
-        List<User> GetUsers();
-
-        List<City> GetCitys();
-        List<Country> GetCountrys();
-
-        void AddUser(User user);
-        City GetCity(Guid id);
-        User GetUser(Guid id);
-        Country GetCountry(Guid id);
-        bool IsExistsUser(Guid id);
-        void EditUser(User user);
-        void DeleteUser(Guid userId);
-
+        bool IsExistsUser(int id);
+        bool IsUniquePhone(string phone);
+        bool IsUniquePhone(int id,string phone);
+        bool IsUniqueEmail(int id,string email);
+        bool IsUniqueEmail(string email);
+        List<UserFullName> GetFullNames();
+        User GetUserWithAllAttachments(object id);
+        List<User> GetAllWithAllAttachments();
+        bool IsUniqueFullName(int id, string firstName, string lastName);
 
     }
 }
