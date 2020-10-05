@@ -1,0 +1,32 @@
+﻿@using HomeTask.Models.ViewModel
+@model UsersViewModel
+
+
+<li>@Html.ActionLink("Create", "Create", "User")</li>
+<table class="table">
+    <tr>
+        <td>FullName</td>
+        <td>Title</td>
+        <td>Country</td>
+        <td>City</td>
+        <td>Phone</td>
+        <td>Email</td>
+        <td>Actions</td>
+    </tr>
+
+    @foreach (var item in Model.UserViewModels)
+    {
+
+        <tr>
+            <td>@item.FullName</td>
+            <td>@item.Title</td>
+            <td>@Model.Countries.Single(x=>x.CountryId==item.CountryId).CountryName</td>
+            <td>@Model.Cities.Single(x=>x.CityId==item.CityId).СityName</td>
+            <td>@item.Phone</td>
+            <td>@item.Email</td>
+            <td><li>@Html.ActionLink("Edit", "Edit", new { Id = @item.Id, FirstName = @item.FullName.Split(' ')[0],LastName = @item.FullName.Split(' ')[1],  Phone = @item.Phone, Email = @item.Email, Title = @item.Title,  Country = @item.CountryId, City = @item.CityId, Comments = @item.Comments})</li></td>
+            <td><li>@Html.ActionLink("Delete", "Delete", new { id = @item.Id })</li></td>
+        </tr>
+    }
+</table>
+  
