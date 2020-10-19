@@ -46,6 +46,15 @@
     <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="Context\CoreDbContext.cs" />
     <Compile Include="Context\ICoreDbContext.cs" />
+    <Compile Include="Migrations\202010191706018_InitialSetup.cs" />
+    <Compile Include="Migrations\202010191706018_InitialSetup.designer.cs">
+      <DependentUpon>202010191706018_InitialSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010191717501_Identity.cs" />
+    <Compile Include="Migrations\202010191717501_Identity.designer.cs">
+      <DependentUpon>202010191717501_Identity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
@@ -58,10 +67,20 @@
       <Name>ItAcademy.Demo.ClassWork.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202010191706018_InitialSetup.resx">
+      <DependentUpon>202010191706018_InitialSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010191717501_Identity.resx">
+      <DependentUpon>202010191717501_Identity.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EntityFramework">
       <Version>6.4.4</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <Version>2.2.3</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

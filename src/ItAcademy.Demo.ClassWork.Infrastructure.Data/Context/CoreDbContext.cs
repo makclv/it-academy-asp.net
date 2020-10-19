@@ -1,8 +1,9 @@
 ﻿using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ItAcademy.Demo.ClassWork.Infrastructure.Data.Context
 {
-    public class CoreDbContext : DbContext, ICoreDbContext
+    public class CoreDbContext : IdentityDbContext, ICoreDbContext
     {
         public CoreDbContext()
             : base("name=ItAcademyCoreDb")

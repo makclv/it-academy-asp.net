@@ -1,6 +1,12 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 using System.Web.Security;
+using ItAcademy.Demo.ClassWork.Client.Mvc.App_Start.Core;
 using ItAcademy.Demo.ClassWork.Client.Mvc.Models.Security;
+using ItAcademy.Demo.ClassWork.Domain.Entities.Identity;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
 {
@@ -18,16 +24,38 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
         public virtual ActionResult Login(string username, string password, string returnUrl)
         {
             // validate
+            var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+            var authManager = HttpContext.GetOwinContext().Authentication;
 
-            FormsAuthentication.SetAuthCookie(username, true);
-            HttpContext.User = new ApplicationUser(username);
-
-            if (!string.IsNullOrWhiteSpace(returnUrl))
+            ApplicationUser user = userManager.Find(username, password);
+            if (user != null)
             {
-                return Redirect(returnUrl);
+                var identity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+                authManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
+
+                if (!string.IsNullOrWhiteSpace(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
+
+                return RedirectToAction(MVC.Home.Index());
             }
 
-            return RedirectToAction(MVC.Home.Index());
+            return View();
+        }
+
+        public ActionResult Register(string email, string password)
+        {
+            var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+            var newUser = new ApplicationUser
+            {
+                Email = email,
+                UserName = email
+            };
+
+            userManager.Create(newUser, password);
+
+            return Content("OK");
         }
 
         public virtual ActionResult Logout()

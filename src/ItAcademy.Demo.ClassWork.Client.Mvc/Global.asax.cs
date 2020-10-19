@@ -15,7 +15,7 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc
     {
         protected void Application_Start()
         {
-            AuthenticateRequest += Application_AuthenticateRequest;
+            //AuthenticateRequest += Application_AuthenticateRequest;
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -35,12 +35,12 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc
             //FluentValidationModelValidatorProvider.Configure();
         }
 
-        private void Application_AuthenticateRequest(object sender, EventArgs e)
-        {
-            if (Context.Request.IsAuthenticated)
-            {
-                Context.User = new ApplicationUser(Context.User.Identity.Name);
-            }
-        }
+        //private void Application_AuthenticateRequest(object sender, EventArgs e)
+        //{
+        //    if (Context.Request.IsAuthenticated)
+        //    {
+        //        Context.User = new ApplicationUser(Context.User.Identity.Name);
+        //    }
+        //}
     }
 }
