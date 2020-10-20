@@ -55,12 +55,23 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
 
             userManager.Create(newUser, password);
 
+            var roleManager = HttpContext.GetOwinContext().GetUserManager<RoleManager<ApplicationRole>>();
+            const string roleName = "Admin";
+            if (!roleManager.RoleExists(roleName))
+            {
+                roleManager.Create(new ApplicationRole { Name = roleName });
+            }
+
+            var newUserDb = userManager.Find(email, password);
+            userManager.AddToRole(newUserDb.Id, roleName);
+
             return Content("OK");
         }
 
         public virtual ActionResult Logout()
         {
-            FormsAuthentication.SignOut();
+            var authManager = HttpContext.GetOwinContext().Authentication;
+            authManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
 
             return RedirectToAction(MVC.Home.Index());
         }
