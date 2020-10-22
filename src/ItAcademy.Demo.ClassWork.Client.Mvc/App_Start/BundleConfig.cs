@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc
 {
@@ -26,7 +25,7 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc
                       "~" + Links.Content.bootstrap_css,
                       "~" + Links.Content.Site_css));
 
-            //BundleTable.EnableOptimizations = true;
+            //// BundleTable.EnableOptimizations = true;
         }
     }
 }

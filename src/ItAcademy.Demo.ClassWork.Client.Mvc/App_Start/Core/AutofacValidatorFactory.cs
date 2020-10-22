@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Mvc;
-using Autofac;
 using FluentValidation;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.App_Start.Core

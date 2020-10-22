@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Web.Mvc;
-using ItAcademy.Demo.ClassWork.Client.Mvc.Infrastructure.Filters;
+﻿using System.Web.Mvc;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
 {
@@ -22,7 +19,6 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
             return View();
         }
 
-        
         public virtual ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

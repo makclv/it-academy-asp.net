@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
@@ -46,7 +43,7 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.App_Start
                 .InstancePerDependency();
             builder.RegisterFilterProvider();
 
-            //Register the API Validators(the custome validators used for FluentValidation)
+            //// Register the API Validators(the custome validators used for FluentValidation)
             AssemblyScanner.FindValidatorsInAssemblyContaining<UserValidator>()
                                     .ForEach(result =>
                                     {
@@ -59,8 +56,7 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.App_Start
 
             var dependencyResolver = new AutofacDependencyResolver(container);
             DependencyResolver.SetResolver(dependencyResolver);
-            //FluentValidationModelValidatorProvider.Configure();
-
+            //// FluentValidationModelValidatorProvider.Configure();
             FluentValidationModelValidatorProvider.Configure(config =>
             {
                 config.ValidatorFactory = new AutofacValidatorFactory(dependencyResolver);

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.Infrastructure.Filters
 {
@@ -12,7 +8,7 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Infrastructure.Filters
         {
             if (!filterContext.ExceptionHandled)
             {
-                filterContext.Result = new ContentResult() {Content = "CustomExceptionFilter" };
+                filterContext.Result = new ContentResult() { Content = "CustomExceptionFilter" };
                 filterContext.ExceptionHandled = true;
             }
         }

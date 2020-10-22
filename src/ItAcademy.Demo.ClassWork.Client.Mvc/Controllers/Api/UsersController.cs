@@ -22,11 +22,12 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers.Api
         }
 
         // GET: api/Users/5
+
         /// <summary>
-        /// Check all possible response types.  
+        /// Check all possible response types.
         /// </summary>
-        /// <param name="id">Type of operation</param>
-        /// <returns>string array</returns>
+        /// <param name="id">Type of operation.</param>
+        /// <returns>string array.</returns>
         [Route("{id}")]
         [HttpGet]
         [SwaggerResponse(HttpStatusCode.OK, "The values.", typeof(string[]))]
@@ -54,7 +55,7 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers.Api
         /// <param name="user">A new user.</param>
         /// <returns>The user.</returns>
         // POST: api/Users
-        [Route()]
+        [Route]
         [HttpPost]
         [SwaggerResponse(HttpStatusCode.OK, "User was created.", typeof(UserDto))]
         [SwaggerResponse(HttpStatusCode.BadRequest, "User is not valid.")]

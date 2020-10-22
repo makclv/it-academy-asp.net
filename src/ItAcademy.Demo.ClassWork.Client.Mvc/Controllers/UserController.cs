@@ -18,7 +18,6 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
             return View();
         }
 
-
         public virtual JsonResult GetByNameWithRole(string name)
         {
             return Json(userPresentationService.GetByNameWithRole(name), JsonRequestBehavior.AllowGet);
@@ -82,9 +81,9 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
             }
         }
 
-        public virtual JsonResult NoWhiteSpacesValidate(string LastName)
+        public virtual JsonResult NoWhiteSpacesValidate(string lastName)
         {
-            if (LastName.Contains(" "))
+            if (lastName.Contains(" "))
             {
                 return Json("Last Name must not contain spaces.", JsonRequestBehavior.AllowGet);
             }

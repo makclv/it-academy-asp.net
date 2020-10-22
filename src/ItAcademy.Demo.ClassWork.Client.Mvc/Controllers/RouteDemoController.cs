@@ -27,13 +27,4 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
                     .ToString());
         }
     }
-
-    public class Test1
-    {
-        public int ShiftDays { get; set; }
-
-        public int ShiftYears { get; set; }
-
-        public bool Active { get; set; }
-    }
 }

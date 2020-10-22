@@ -1,8 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using ItAcademy.Demo.ClassWork.Client.Mvc.App_Start.Core;
-using ItAcademy.Demo.ClassWork.Client.Mvc.Models.Security;
 using ItAcademy.Demo.ClassWork.Domain.Entities.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;

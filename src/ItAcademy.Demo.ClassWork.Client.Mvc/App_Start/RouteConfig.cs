@@ -15,25 +15,28 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc
             routes.MapRoute(
                 name: "RouteDemo1",
                 url: "datetime/getcurrentdate/{shiftDays}_{shiftYears}",
-                defaults: new { controller = "RouteDemo", action = "GetCurrentDate", 
-                    shiftDays = UrlParameter.Optional, 
-                    shiftYears = UrlParameter.Optional },
-                constraints: new { 
+                defaults: new
+                {
+                    controller = "RouteDemo", action = "GetCurrentDate",
+                    shiftDays = UrlParameter.Optional,
+                    shiftYears = UrlParameter.Optional
+                },
+                constraints: new
+                {
                     shiftDays = new CompoundRouteConstraint(
-                        new List<IRouteConstraint> 
-                        { 
-                            new RangeRouteConstraint(1, 15), 
-                            new IntRouteConstraint() 
-                        } ), 
-                    shiftYears = new RangeRouteConstraint(1, 15) }
-            );
+                        new List<IRouteConstraint>
+                        {
+                            new RangeRouteConstraint(1, 15),
+                            new IntRouteConstraint()
+                        }),
+                    shiftYears = new RangeRouteConstraint(1, 15)
+                });
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "ItAcademy.Demo.ClassWork.Client.Mvc.Controllers" }
-            );
+                namespaces: new[] { "ItAcademy.Demo.ClassWork.Client.Mvc.Controllers" });
         }
     }
 }

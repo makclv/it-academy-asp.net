@@ -37,6 +37,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\ItAcademy.Demo.ClassWork.Client.Mvc.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\StyleCop.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -273,7 +274,6 @@
     <Compile Include="Models\FilterTest\Sum.cs" />
     <Compile Include="Models\ModelBinderExample\PersonViewModel.cs" />
     <Compile Include="Models\ModelBinderExample\StudentViewModel.cs" />
-    <Compile Include="Models\Security\ApplicationUser.cs" />
     <Compile Include="Models\TryUpdateModel\PersonViewModel.cs" />
     <Compile Include="Models\TryUpdateModel\StudentViewModel.cs" />
     <Compile Include="Product.HomeController.generated.cs">
@@ -375,6 +375,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Product\Data\" />
+    <Folder Include="Models\Security\" />
     <Folder Include="Views\Acoount\" />
     <Folder Include="Views\ModelBinderExample\" />
     <Folder Include="Views\RouteDemo\" />
@@ -405,6 +406,10 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
