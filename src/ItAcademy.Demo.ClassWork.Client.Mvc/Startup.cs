@@ -16,6 +16,8 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc
     {
         public void Configuration(IAppBuilder app)
         {
+            app.MapSignalR();
+
             app.CreatePerOwinContext(() => new CoreDbContext());
             app.CreatePerOwinContext<AppUserManager>(AppUserManager.Create);
 
