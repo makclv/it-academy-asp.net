@@ -1,5 +1,4 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using ItAcademy.Demo.ClassWork.Client.Mvc.Models.EntityFramework;
 using ItAcademy.Demo.ClassWork.Domain.Entities;
 

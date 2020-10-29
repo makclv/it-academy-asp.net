@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Web.Http;
 using ItAcademy.Demo.ClassWork.Client.Mvc.Infrastructure.Filters;
 using ItAcademy.Demo.ClassWork.Client.Mvc.Models.Api;
+using ItAcademy.Demo.ClassWork.Client.Mvc.Services.Interfaces;
 using Swashbuckle.Swagger.Annotations;
 
 namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers.Api
@@ -13,12 +14,19 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers.Api
     [RoutePrefix("api/Users")]
     public class UsersController : ApiController
     {
-        // GET: api/Users
-        [Route]
-        [HttpGet]
-        public IHttpActionResult Get()
+        private readonly IUserPresentationService userPresentationService;
+
+        public UsersController(IUserPresentationService userPresentationService)
         {
-            return Ok(new string[] { "value1", "value2" });
+            this.userPresentationService = userPresentationService;
+        }
+
+        // GET: api/Users
+        [Route("find/{name}")]
+        [HttpGet]
+        public IHttpActionResult Get(string name)
+        {
+            return Ok(userPresentationService.GetByNameWithRole(name));
         }
 
         // GET: api/Users/5

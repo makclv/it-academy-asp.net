@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ItAcademy.Demo.ClassWork.Client.Mvc.Models.TryUpdateModel;
 
@@ -17,14 +14,18 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
 
         public virtual ActionResult IndexV2()
         {
-            var personViewModel = new PersonViewModel();
-            personViewModel.Age = Convert.ToInt32(Request.QueryString["Age"]);
-            personViewModel.Name = Request.QueryString["Name"];
+            var personViewModel = new PersonViewModel
+            {
+                Age = Convert.ToInt32(Request.QueryString["Age"]),
+                Name = Request.QueryString["Name"]
+            };
 
-            var studentViewModel = new StudentViewModel();
-            studentViewModel.DataFromDB = "IndexV2";
-            studentViewModel.University = Request.QueryString["University"];
-            studentViewModel.Name = Request.QueryString["Name"];
+            var studentViewModel = new StudentViewModel
+            {
+                DataFromDB = "IndexV2",
+                University = Request.QueryString["University"],
+                Name = Request.QueryString["Name"]
+            };
 
             return Json(new { personViewModel, studentViewModel }, JsonRequestBehavior.AllowGet);
         }
@@ -32,8 +33,10 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.Controllers
         public virtual ActionResult IndexV3()
         {
             var personViewModel = new PersonViewModel();
-            var studentViewModel = new StudentViewModel();
-            studentViewModel.DataFromDB = "IndexV3";
+            var studentViewModel = new StudentViewModel
+            {
+                DataFromDB = "IndexV3"
+            };
 
             TryUpdateModel(personViewModel);
             TryUpdateModel(studentViewModel);

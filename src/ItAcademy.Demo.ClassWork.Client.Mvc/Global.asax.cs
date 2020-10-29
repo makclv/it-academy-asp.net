@@ -20,7 +20,7 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc
 
             ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
 
-            AutofacContainer.Register();
+            GlobalConfiguration.Configure(AutofacContainer.Register);
 
             Mapper.Initialize(cfg =>
             {

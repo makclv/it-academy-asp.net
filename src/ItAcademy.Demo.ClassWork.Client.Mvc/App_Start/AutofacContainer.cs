@@ -1,8 +1,10 @@
 ﻿using System.Linq;
 using System.Reflection;
+using System.Web.Http;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using FluentValidation;
 using FluentValidation.Mvc;
 using ItAcademy.Demo.ClassWork.Client.Mvc.App_Start.Core;
@@ -19,10 +21,11 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.App_Start
 {
     public static class AutofacContainer
     {
-        public static void Register()
+        public static void Register(HttpConfiguration config)
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
             builder.RegisterType<CoreDbContext>().As<ICoreDbContext>().InstancePerLifetimeScope();
@@ -57,10 +60,12 @@ namespace ItAcademy.Demo.ClassWork.Client.Mvc.App_Start
             var dependencyResolver = new AutofacDependencyResolver(container);
             DependencyResolver.SetResolver(dependencyResolver);
             //// FluentValidationModelValidatorProvider.Configure();
-            FluentValidationModelValidatorProvider.Configure(config =>
+            FluentValidationModelValidatorProvider.Configure(c =>
             {
-                config.ValidatorFactory = new AutofacValidatorFactory(dependencyResolver);
+                c.ValidatorFactory = new AutofacValidatorFactory(dependencyResolver);
             });
+
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
     }
 }
